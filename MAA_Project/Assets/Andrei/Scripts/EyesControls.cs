@@ -19,7 +19,7 @@ public class EyesControls : MonoBehaviour
     {
         eyesClosed = false;
 
-        grayNoise.enabled = false;
+        ChangeUI(false);
     }
 
     void Update()
@@ -34,7 +34,7 @@ public class EyesControls : MonoBehaviour
             DisableMeshes(openEyesEnvironment.transform);
             eyesClosed = true;
 
-            grayNoise.enabled = true;
+            ChangeUI(true);
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse1) && eyesClosed)
@@ -42,7 +42,7 @@ public class EyesControls : MonoBehaviour
             EnableMeshes(openEyesEnvironment.transform);
             eyesClosed = false;
 
-            grayNoise.enabled = false;
+            ChangeUI(false);
         }
     }
 
@@ -74,5 +74,10 @@ public class EyesControls : MonoBehaviour
 
             DisableMeshes(child);
         }
+    }
+
+    private void ChangeUI(bool b)
+    {
+        grayNoise.enabled = b;
     }
 }
