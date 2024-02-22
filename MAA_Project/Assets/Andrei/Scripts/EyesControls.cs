@@ -62,6 +62,7 @@ public class EyesControls : MonoBehaviour
                     timingIndex = timings.Length - 1;
 
                 anxietySlider.maxValue = timings[timingIndex];
+                monsterLogic.ChooseWanderingPoint();
                 roomShuffle.ReshuffleRooms();
             }
         }

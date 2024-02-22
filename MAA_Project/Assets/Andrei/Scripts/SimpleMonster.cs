@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SimpleMonster : MonoBehaviour
 {
@@ -60,9 +61,14 @@ public class SimpleMonster : MonoBehaviour
         }
         else
         {
-            int i = Random.Range(0, wanderingPoints.Count);
-            wanderingTarget = wanderingPoints[i];
+           ChooseWanderingPoint();
         }
+    }
+
+    public void ChooseWanderingPoint()
+    {
+        int i = Random.Range(0, wanderingPoints.Count);
+        wanderingTarget = wanderingPoints[i];
     }
 
     public void ChasePlayer()
@@ -87,6 +93,7 @@ public class SimpleMonster : MonoBehaviour
         {
             print("Skill issue");
             Debug.LogError("Eaten by monster");
+            SceneManager.LoadScene("SimpleGameOver");
         }
     }
 }

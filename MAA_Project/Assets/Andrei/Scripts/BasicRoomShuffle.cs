@@ -6,6 +6,7 @@ using UnityEngine.Windows;
 
 public class BasicRoomShuffle : MonoBehaviour
 {
+    [SerializeField] UnitShuffle largeShuffle;
     [SerializeField] GameObject[] rooms;
     [SerializeField] AnchorObject[] roomsAnchors;
 
@@ -66,6 +67,8 @@ public class BasicRoomShuffle : MonoBehaviour
             Debug.Log("Relative Position: " + relativePositions[1]);
             Debug.Log(hit.transform.name);
         }
+
+        largeShuffle.RearrangeUnits();
 
         for (int i = 0; i < roomsAnchors.Length; i++)
         {

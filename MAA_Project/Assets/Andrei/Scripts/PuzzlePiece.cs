@@ -14,16 +14,20 @@ public class PuzzlePiece : MonoBehaviour
 
     [SerializeField] PuzzleManager manager;
 
+    PhraseMovement phraseMovement;
+
 
     private void Start()
     {
         text.color = unseenColor;
         text.text = puzzleText;
+
+        phraseMovement = GetComponent<PhraseMovement>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 6)
+        if(other.gameObject.name == "EyeSightCollider")
         {
             PuzzleSpotted();
             this.GetComponent<Collider>().enabled = false;
@@ -34,6 +38,7 @@ public class PuzzlePiece : MonoBehaviour
     {
         text.color = seenColor;
         manager.Spotted(this);
+        phraseMovement.enabled = false;
     }
 
 
