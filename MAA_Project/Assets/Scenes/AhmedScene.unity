@@ -157,7 +157,7 @@ MonoBehaviour:
   nodeRadius: 0.5
   unwalkbleMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
 --- !u!4 &15109281
 Transform:
   m_ObjectHideFlags: 0
@@ -1066,7 +1066,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7cf9ed3a8103e9f46bfc5664cdc16fb0, type: 2}
+  - {fileID: 2100000, guid: cc8e23d29afa51c47b27e1063ed869c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
