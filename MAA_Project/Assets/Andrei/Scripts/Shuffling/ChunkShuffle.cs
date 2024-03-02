@@ -10,33 +10,57 @@ public class ChunkShuffle : MonoBehaviour
 
     [Header("Finished structure")]
     public List<ChunkConfiguration> configurations = new List<ChunkConfiguration>();
+
+    private int currentIndex;
     void Start()
     {
-        
+        for(int i = 0; i < configurations.Count; i++)
+        {
+            if (configurations[i].isDefault)
+            {
+                PlaceChunks(configurations[i]);
+                currentIndex = i;
+            }
+        }
     }
 
     void Update()
     {
        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            ShuffleChunks();
-            PlaceChunks(configurations[0]);
+        {    
+            PlaceChunks(FetchNextChunk(currentIndex));
+            currentIndex = (currentIndex + 1) % configurations.Count;
         } 
     }
 
-    void PlaceChunks(ChunkConfiguration chunks)
+    private ChunkConfiguration FetchNextChunk(int index)
     {
-        for (int i = 0; i < chunks.AnchorObjects.Count; i++)
+        return configurations[(index + 1) % configurations.Count];
+    }
+
+    void PlaceChunks(ChunkConfiguration chunk)
+    {
+        for (int i = 0; i < chunk.anchorObjects.Count; i++)
         {
-            chunks.AnchorObjects[i].chunkObject.transform.position = chunks.AnchorObjects[i].anchorPosition;
-            chunks.AnchorObjects[i].chunkObject.transform.rotation = Quaternion.Euler(chunks.AnchorObjects[i].anchorAngle);
+            chunk.anchorObjects[i].chunkObject.transform.position = chunk.anchorObjects[i].anchorPosition;
+            chunk.anchorObjects[i].chunkObject.transform.rotation = Quaternion.Euler(chunk.anchorObjects[i].anchorAngle);
+        }
+
+        // Hide certain objects
+        for (int j = 0; j < chunk.objectsToHide.Count; j++)
+        {
+            chunk.objectsToHide[j].SetActive(false);
+        }
+
+        // Reveal certain objects
+
+        for (int j = 0; j < chunk.objectsToReveal.Count; j++)
+        {
+            chunk.objectsToReveal[j].SetActive(true);
         }
     }
 
-    public void ShuffleChunks()
-    {
-        Shuffle<ChunkConfiguration>(configurations);
-    }
+   
 
     public void AppendNewConfiguration()
     {
@@ -51,7 +75,7 @@ public class ChunkShuffle : MonoBehaviour
                 newAnchor.anchorPosition = draftChunks[i].transform.position;
                 newAnchor.anchorAngle = draftChunks[i].transform.rotation.eulerAngles;
 
-                newConfiguration.AnchorObjects.Add(newAnchor);
+                newConfiguration.anchorObjects.Add(newAnchor);
             }
 
             configurations.Add(newConfiguration);
@@ -63,32 +87,16 @@ public class ChunkShuffle : MonoBehaviour
 
         draftChunks.Clear();
     }
-
-    public static void Shuffle<T>(List<T> list)
-    {
-        System.Random random = new System.Random();
-
-        List<T> originalList = new List<T>(list); 
-
-        
-        do
-        {
-            for (int i = list.Count - 1; i > 0; i--)
-            {
-                int j = random.Next(0, i + 1);
-                T temp = list[i];
-                list[i] = list[j];
-                list[j] = temp;
-            }
-        } while (list.SequenceEqual(originalList)); 
-
-    }
 }
 
 [System.Serializable]
 public class ChunkConfiguration
 {
-    public List<Anchor> AnchorObjects = new List<Anchor>();
+    public List<Anchor> anchorObjects = new List<Anchor>();
+    public bool isDefault;
+
+    public List<GameObject> objectsToHide;
+    public List<GameObject> objectsToReveal;
 }
 
 
