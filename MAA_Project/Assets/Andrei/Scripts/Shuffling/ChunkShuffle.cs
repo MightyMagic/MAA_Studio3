@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ChunkShuffle : MonoBehaviour
 {
+    [Header("List of objects that stay within the room")]
+    [SerializeField] List<KeepInPlace> objectsInPlace;
+
     [Header("Newest chunk")]
     public List<GameObject> draftChunks;
 
@@ -28,9 +31,24 @@ public class ChunkShuffle : MonoBehaviour
     {
        if(Input.GetKeyDown(KeyCode.Escape))
         {    
-            PlaceChunks(FetchNextChunk(currentIndex));
-            currentIndex = (currentIndex + 1) % configurations.Count;
+           RearrangeChunks();
         } 
+    }
+
+    private void RearrangeChunks()
+    {
+        for (int i = 0; i < objectsInPlace.Count; i++)
+        {
+            objectsInPlace[i].FetchPosition();
+        }
+
+        PlaceChunks(FetchNextChunk(currentIndex));
+        currentIndex = (currentIndex + 1) % configurations.Count;
+
+        for (int i = 0; i < objectsInPlace.Count; i++)
+        {
+            objectsInPlace[i].MoveToPosition();
+        }
     }
 
     private ChunkConfiguration FetchNextChunk(int index)
