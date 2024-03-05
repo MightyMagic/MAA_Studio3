@@ -11,6 +11,7 @@ public class PlayerMovmentAhmed : MonoBehaviour
     [SerializeField] Transform lookPoint;
     [SerializeField] bool openPuzzleWindow;
     [SerializeField] Canvas canvas;
+    [SerializeField] GameObject puzzleSpace;
     float verticalRotStore;
     Vector3 moveInput;
     Camera cam;
@@ -35,11 +36,13 @@ public class PlayerMovmentAhmed : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1)) 
         {
             openPuzzleWindow = true;
+            puzzleSpace.SetActive(true);
             canvas.enabled = true;
         }
         else
         {
             openPuzzleWindow = false;
+            puzzleSpace.SetActive(false);
             canvas.enabled = false;
         }
         MovePlayer();

@@ -5,11 +5,15 @@ using TMPro;
 
 public class PuzzleManagerAhmed : MonoBehaviour
 {
-    [SerializeField] PuzzleFinder finder;
+    [SerializeField] PuzzleCatcher finder;
+    [SerializeField] Transform playerCam;
     [SerializeField] Canvas puzzleCanvas;
-    [SerializeField] List<TextMeshProUGUI> canvasTexts = new List<TextMeshProUGUI>();
+    [SerializeField] puzzleCaptcherMeter meter;
+    [SerializeField] GameObject catcherWindowInClosedeyes;
+    [SerializeField] List<WordInSpace> canvasTexts = new List<WordInSpace>();
     [SerializeField] List<TextMeshProUGUI> panelOrderedTexts = new List<TextMeshProUGUI>();
     [SerializeField] List<PuzzleWordSO> listOfCorrectOrder = new List<PuzzleWordSO>();
+    [SerializeField] float activationAngle = 50f;
 
     private void Update()
     {
@@ -21,41 +25,81 @@ public class PuzzleManagerAhmed : MonoBehaviour
     {
         for (int i = finder.CapturedWords.Count - 1; i >= 0; i--)
         {
-            canvasTexts[i].text = finder.CapturedWords[i].wordText.text;
+            canvasTexts[i].wordInSpaceText = finder.CapturedWords[i].wordText.text;
+            canvasTexts[i].textMeshPro.text = canvasTexts[i].wordInSpaceText;
         }
     }
 
     void AddWordToPanel()
     {
+        bool allCanvasFilled = true;
+
+        // Check if all canvas text slots are filled
+        foreach (WordInSpace wordInSpace in canvasTexts)
+        {
+            if (string.IsNullOrEmpty(wordInSpace.wordInSpaceText))
+            {
+                allCanvasFilled = false;
+                break;
+            }
+        }
+
+        // Add word to panel if conditions are met
         for (int i = 0; i < canvasTexts.Count; i++)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            Vector3 textDirection = canvasTexts[i].transform.position - playerCam.transform.position;
+            float angle = Vector3.Angle(playerCam.forward, textDirection);
+
+            if (angle < activationAngle && Input.GetKey(KeyCode.Mouse1)
+                && !canvasTexts[i].wordIsInPanel
+                && canvasTexts[i].wordInSpaceText != ""
+                && allCanvasFilled)
             {
-                for (int j = 0; j < panelOrderedTexts.Count; j++)
-                {
-                    if (string.IsNullOrEmpty(panelOrderedTexts[j].text))
-                    {
-                        panelOrderedTexts[j].text = canvasTexts[i].text;
-                        break;
-                    }
-                }
-                // Check if all panel slots are filled after adding a word
-                bool allFilled = true;
                 foreach (TextMeshProUGUI text in panelOrderedTexts)
                 {
-                    if (string.IsNullOrEmpty(text.text))
+                    if (text.text == canvasTexts[i].wordInSpaceText)
                     {
-                        allFilled = false;
+                        canvasTexts[i].wordIsInPanel = true;
                         break;
                     }
                 }
-                if (allFilled)
+
+                catcherWindowInClosedeyes.SetActive(true);
+                meter.PuzzleCatcherMeterUpdaterInClosedEyes(canvasTexts[i]);
+
+                if (canvasTexts[i].wordSpaceCurrentMeter >= meter.meterThreshold)
                 {
-                    ComparePanelWithCorrectOrder();
+                    Debug.Log("Adding word: " + canvasTexts[i].wordInSpaceText);
+                    for (int j = 0; j < panelOrderedTexts.Count; j++)
+                    {
+                        if (string.IsNullOrEmpty(panelOrderedTexts[j].text))
+                        {
+                            panelOrderedTexts[j].text = canvasTexts[i].wordInSpaceText;
+                            break;
+                        }
+                    }
+                    bool allFilled = true;
+                    foreach (TextMeshProUGUI text in panelOrderedTexts)
+                    {
+                        if (string.IsNullOrEmpty(text.text))
+                        {
+                            allFilled = false;
+                            break;
+                        }
+                    }
+                    if (allFilled)
+                    {
+                        ComparePanelWithCorrectOrder();
+                    }
                 }
+            }
+            else if (canvasTexts[i].wordIsInPanel && !Input.GetKey(KeyCode.Mouse1))
+            {
+                catcherWindowInClosedeyes.SetActive(false);
             }
         }
     }
+
 
     void ComparePanelWithCorrectOrder()
     {
@@ -79,7 +123,15 @@ public class PuzzleManagerAhmed : MonoBehaviour
             foreach (TextMeshProUGUI text in panelOrderedTexts)
             {
                 text.text = "";
+                ClearBools();
             }
+        }
+    }
+    void ClearBools()
+    {
+        foreach(WordInSpace captured in canvasTexts)
+        {
+            captured.wordIsInPanel = false;
         }
     }
 }

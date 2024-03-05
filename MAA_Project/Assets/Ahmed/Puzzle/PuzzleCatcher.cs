@@ -4,7 +4,7 @@ using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PuzzleFinder : MonoBehaviour
+public class PuzzleCatcher : MonoBehaviour
 {
     [SerializeField] puzzleCaptcherMeter puzzleMeter;
     //[SerializeField] EyesControls eyes;
@@ -21,9 +21,9 @@ public class PuzzleFinder : MonoBehaviour
 
     private void Update()
     {
-        ActivatePuzzleWindow();
+        CapturePuzzlesOnWalls();
     }
-    void ActivatePuzzleWindow()
+    void CapturePuzzlesOnWalls()
     {
         for(int i = puzzleWords.Count - 1; i >= 0; i--)
         {
