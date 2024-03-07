@@ -54,7 +54,7 @@ public class PuzzleCatcher : MonoBehaviour
                             CapturedWords.Add(puzzleWords[i]);
                             puzzleWords[i].captured = true;
                             currentIsCaptured = puzzleWords[i].captured;
-                            puzzleWords[i].gameObject.SetActive(false);
+                           // puzzleWords[i].gameObject.SetActive(false);
                                                      
                         }
                     }
