@@ -6,7 +6,7 @@ using UnityEngine;
 public class WobblyText : MonoBehaviour
 {
     public TMP_Text textComponent;
-     float wobbleSpeed = 80;
+     float wobbleSpeed = 50;
      float wobbleDistance = 50;
     PuzzleWord puzzleWord;
 
@@ -18,7 +18,7 @@ public class WobblyText : MonoBehaviour
     void Update()
     {
      
-        wobbleSpeed = Mathf.Lerp(80f, 0f, puzzleWord.currentMeter);
+        wobbleSpeed = Mathf.Lerp(50f, 0f, puzzleWord.currentMeter);
         wobbleDistance = Mathf.Lerp(50f, 0f, puzzleWord.currentMeter);
 
         textComponent.ForceMeshUpdate();
