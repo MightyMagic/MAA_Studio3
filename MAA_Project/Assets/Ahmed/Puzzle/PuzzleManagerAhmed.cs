@@ -13,6 +13,7 @@ public class PuzzleManagerAhmed : MonoBehaviour
     [SerializeField] List<WordInSpace> canvasTexts = new List<WordInSpace>();
     [SerializeField] List<TextMeshProUGUI> panelOrderedTexts = new List<TextMeshProUGUI>();
     [SerializeField] List<PuzzleWordSO> listOfCorrectOrder = new List<PuzzleWordSO>();
+    [SerializeField] List<DuplicateTextEffect> duplicateTexts = new List<DuplicateTextEffect>();
     [SerializeField] float activationAngle = 50f;
 
     private void Update()
@@ -124,6 +125,10 @@ public class PuzzleManagerAhmed : MonoBehaviour
             {
                 text.text = "";
                 ClearBools();
+                foreach(DuplicateTextEffect dupText in duplicateTexts)
+                {
+                    dupText.ResetDuplicateTextPos();
+                }
             }
         }
     }
@@ -134,4 +139,5 @@ public class PuzzleManagerAhmed : MonoBehaviour
             captured.wordIsInPanel = false;
         }
     }
+
 }
