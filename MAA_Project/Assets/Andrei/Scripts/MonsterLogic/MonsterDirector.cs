@@ -18,9 +18,9 @@ public class MonsterDirector : MonoBehaviour
     int currentIndex;
     int currentChunkIndex;
 
-    bool globalPatrol;
-    bool investigateRoom;
-    bool chasing;
+    public bool globalPatrol = true;
+    public bool investigateRoom = false;
+    public bool chasing = false;
 
     void Awake()
     {
@@ -33,6 +33,30 @@ public class MonsterDirector : MonoBehaviour
         //InvestigateChunk(1);
 
         PatrolAround(FindClosestWaypointToTarget(transform));
+    }
+
+    private void Update()
+    {
+        if (monsterScript.pointsToVisit.Count == 0 && monsterScript.destinations.Count == 0)
+        {
+            if(globalPatrol)
+                PatrolAround(FindClosestWaypointToTarget(transform));
+        }
+        else if(investigateRoom)
+        {
+            InvestigateChunk(FindClosestWaypointToTarget(monsterScript.player.transform));
+            Investigate(false);
+        }
+    }
+
+    public void Chase(bool argument)
+    {
+        chasing = argument;
+    }
+
+    public void Investigate(bool argument)
+    {
+        investigateRoom = argument;
     }
 
     void FetchAllPatrolWaypoints()
@@ -144,20 +168,20 @@ public class MonsterDirector : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
-    {
-        for (int i = 0; i < patrolWaypoints.Count - 1; i++)
-        {
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawSphere(patrolWaypoints[i].waypoint.position, 1);
-            Gizmos.DrawLine(patrolWaypoints[i].waypoint.position, patrolWaypoints[i + 1].waypoint.position);
-        }
-
-        //for (int i = 0; i < chunkWaypoints.Count - 1; i++)
-        //{
-        //    Gizmos.color = Color.green;
-        //    Gizmos.DrawSphere(waypoints[i].waypoint.position, 1);
-        //    Gizmos.DrawLine(waypoints[i].waypoint.position, waypoints[i + 1].waypoint.position);
-        //}
-    }
+   //private void OnDrawGizmos()
+   //{
+   //    for (int i = 0; i < patrolWaypoints.Count - 1; i++)
+   //    {
+   //        Gizmos.color = Color.magenta;
+   //        Gizmos.DrawSphere(patrolWaypoints[i].waypoint.position, 1);
+   //        Gizmos.DrawLine(patrolWaypoints[i].waypoint.position, patrolWaypoints[i + 1].waypoint.position);
+   //    }
+   //
+   //    //for (int i = 0; i < chunkWaypoints.Count - 1; i++)
+   //    //{
+   //    //    Gizmos.color = Color.green;
+   //    //    Gizmos.DrawSphere(waypoints[i].waypoint.position, 1);
+   //    //    Gizmos.DrawLine(waypoints[i].waypoint.position, waypoints[i + 1].waypoint.position);
+   //    //}
+   //}
 }

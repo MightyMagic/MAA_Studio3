@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class ChunkShuffle : MonoBehaviour
 {
+    [Header("A star")]
+    [SerializeField] Grid aStarGrid;
+
+    [Header("Monster")]
+    [SerializeField] SimpleMonster monsterScript;
+
     [Header("List of objects that stay within the room")]
     [SerializeField] List<KeepInPlace> objectsInPlace;
 
@@ -15,6 +21,7 @@ public class ChunkShuffle : MonoBehaviour
     public List<ChunkConfiguration> configurations = new List<ChunkConfiguration>();
 
     private int currentIndex;
+
     void Start()
     {
         for(int i = 0; i < configurations.Count; i++)
@@ -25,13 +32,16 @@ public class ChunkShuffle : MonoBehaviour
                 currentIndex = i;
             }
         }
+
+        StartCoroutine(RebuildGrid());
     }
 
     void Update()
     {
        if(Input.GetKeyDown(KeyCode.Escape))
-        {    
+        {                                                                                
            RearrangeChunks();
+           StartCoroutine(RebuildGrid());
         } 
     }
 
@@ -64,6 +74,9 @@ public class ChunkShuffle : MonoBehaviour
             chunk.anchorObjects[i].chunkObject.transform.rotation = Quaternion.Euler(chunk.anchorObjects[i].anchorAngle);
         }
 
+        aStarGrid.CreateGrid();
+        monsterScript.ClearStackOfPoints();
+
         // Hide certain objects
         for (int j = 0; j < chunk.objectsToHide.Count; j++)
         {
@@ -76,6 +89,16 @@ public class ChunkShuffle : MonoBehaviour
         {
             chunk.objectsToReveal[j].SetActive(true);
         }
+
+       //aStarGrid.CreateGrid();
+       //monsterScript.ClearStackOfPoints();
+    }
+
+    public IEnumerator RebuildGrid()
+    {
+        yield return new WaitForSeconds(0.5f);
+        aStarGrid.CreateGrid();
+        monsterScript.ClearStackOfPoints();
     }
 
    

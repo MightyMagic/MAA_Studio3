@@ -18,7 +18,7 @@ public class SimpleMonster : MonoBehaviour
     public List<Vector3> destinations = new List<Vector3>();
     GameObject wanderingTarget;
 
-    [SerializeField] GameObject player;
+    public GameObject player;
     Rigidbody rb;
 
     MonsterDirector monsterDirector;
@@ -85,6 +85,7 @@ public class SimpleMonster : MonoBehaviour
     public void ClearStackOfPoints()
     {
         pointsToVisit.Clear();
+        destinations.Clear();
     }
 
     public void WanderAround()
