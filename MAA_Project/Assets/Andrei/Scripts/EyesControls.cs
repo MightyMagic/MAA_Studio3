@@ -73,7 +73,7 @@ public class EyesControls : MonoBehaviour
         }
         else
         {
-            monsterLogic.ChasePlayer();
+           // monsterLogic.ChasePlayer();
         }
 
 

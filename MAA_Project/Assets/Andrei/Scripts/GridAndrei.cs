@@ -17,18 +17,19 @@ public class GridAndrei : MonoBehaviour
 
     public List<NodeAndrei> path;
 
-    private void Start()
+    private void Awake()
     {
         nodeDiameter = nodeRadius * 2f;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
 
-        //CreateGrid();
+        CreateGrid();
 
     }
 
     public void CreateGrid()
     {
+        
         grid = new NodeAndrei[gridSizeX, gridSizeY];
 
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;
@@ -43,6 +44,8 @@ public class GridAndrei : MonoBehaviour
                 grid[x,y] = new NodeAndrei(walkable, worldPoint, x, y);
             }
         }
+
+        Debug.LogError("I am making the grid! " + " It is this big " + grid.Length);
     }
 
     public List<NodeAndrei> GetNeighbors(NodeAndrei node)
@@ -108,7 +111,7 @@ public class GridAndrei : MonoBehaviour
                     }
                 }
 
-                Gizmos.DrawCube(node.worldPosition, Vector3.one * nodeDiameter * 0.3f);
+                Gizmos.DrawCube(node.worldPosition, Vector3.one * nodeDiameter * 0.6f);
             }
         }
     }

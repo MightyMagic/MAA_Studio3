@@ -10,12 +10,17 @@ public class PathfindingAndrei : MonoBehaviour
 
     private void Awake()
     {
+        
+    }
+    private void Start()
+    {
         grid = GetComponent<GridAndrei>();
+        //FindPath(seeker.position, target.position);
     }
 
     private void Update()
     {
-        //FindPath(seeker.position, target.position);
+       //FindPath(seeker.position, target.position);
     }
 
     public void FindPath(Vector3 startPos, Vector3 targetPos)
@@ -44,6 +49,7 @@ public class PathfindingAndrei : MonoBehaviour
 
             if (currentNode == targetNode)
             {
+                Debug.LogError("Path is being retraced, the distance is " + grid.path.Count + " nodes!");
                 RetracePath(startNode, targetNode);
                 return;
             }
@@ -67,6 +73,9 @@ public class PathfindingAndrei : MonoBehaviour
                 
             }
         }
+
+        Debug.LogError("Path is found, the distance is " + grid.path.Count + " nodes!");
+
     }
 
     void RetracePath(NodeAndrei startNode, NodeAndrei endNode)
