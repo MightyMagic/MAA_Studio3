@@ -75,7 +75,7 @@ public class ChunkShuffle : MonoBehaviour
         }
 
         aStarGrid.CreateGrid();
-        monsterScript.ClearStackOfPoints();
+       // monsterScript.ClearStackOfPoints();
 
         // Hide certain objects
         for (int j = 0; j < chunk.objectsToHide.Count; j++)
