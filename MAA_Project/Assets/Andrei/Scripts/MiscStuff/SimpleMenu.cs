@@ -8,7 +8,7 @@ public class SimpleMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class SimpleMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("CoreMechanics");
+        SceneManager.LoadScene(1);
     }
 
     public void GoBackToMainMenu()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class SimpleMonster : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class SimpleMonster : MonoBehaviour
     [SerializeField] Grid grid;
 
    
-    [SerializeField] float moveSpeed;
+    public float moveSpeed;
 
 
     public List<GameObject> pointsToVisit;
@@ -19,11 +20,13 @@ public class SimpleMonster : MonoBehaviour
     GameObject wanderingTarget;
 
     public GameObject player;
-    Rigidbody rb;
+    public Rigidbody rb;
 
     MonsterDirector monsterDirector;
 
     public bool activelyChasing;
+
+    public bool gridIsBuilt = true;
 
     void Start()
     {
@@ -32,27 +35,31 @@ public class SimpleMonster : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         monsterDirector = GetComponent<MonsterDirector>();
 
-        activelyChasing = false;
-
-        //int i = Random.Range(0, wanderingPoints.Count);
-        //wanderingTarget = wanderingPoints[i];
-
-        //Alert();
-        
-       
+        activelyChasing = false;  
     }
 
     void Update()
-    {
-        
+    {  
         MoveAlongPath();
-       
+        RotateTowardsTarget();
+    }
 
+    void RotateTowardsTarget()
+    {
+        if (destinations.Count > 0)
+        {
+            Vector3 targetDirection = destinations[0] - transform.position;
+            targetDirection = new Vector3(targetDirection.x, 0f, targetDirection.z);
+
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
+        }
     }
 
     void MoveAlongPath()
     {
-        if(destinations.Count > 0)
+        if (destinations.Count > 0)
         {
             Vector3 currentTarget = (destinations[0] - transform.position).normalized * moveSpeed;
             rb.velocity = new Vector3(currentTarget.x, 0f, currentTarget.z);
@@ -62,7 +69,7 @@ public class SimpleMonster : MonoBehaviour
             }
             else
             {
-                if(destinations.Count > 0)
+                if (destinations.Count > 0)
                 {
                     destinations.RemoveAt(0);
                 }
@@ -70,7 +77,7 @@ public class SimpleMonster : MonoBehaviour
         }
         else if (destinations.Count == 0)
         {
-            if(pointsToVisit.Count > 0)
+            if (pointsToVisit.Count > 0)
             {
                 BuildPathToPoint(pointsToVisit[0]);
                 pointsToVisit.RemoveAt(0);
@@ -88,23 +95,23 @@ public class SimpleMonster : MonoBehaviour
         destinations.Clear();
     }
 
-    public void WanderAround()
-    {
-        if((transform.position - wanderingTarget.transform.position).magnitude > 3f)
-        {
-            BuildPathToPoint(wanderingTarget);
-        }
-        else
-        {
-           ChooseWanderingPoint();
-        }
-    }
-    
-    public void ChooseWanderingPoint()
-    {
-        int i = Random.Range(0, pointsToVisit.Count);
-        wanderingTarget = pointsToVisit[i];
-    }
+   // public void WanderAround()
+   // {
+   //     if((transform.position - wanderingTarget.transform.position).magnitude > 3f)
+   //     {
+   //         BuildPathToPoint(wanderingTarget);
+   //     }
+   //     else
+   //     {
+   //        ChooseWanderingPoint();
+   //     }
+   // }
+   // 
+   // public void ChooseWanderingPoint()
+   // {
+   //     int i = Random.Range(0, pointsToVisit.Count);
+   //     wanderingTarget = pointsToVisit[i];
+   // }
 
     //public void Alert()
     //{
@@ -115,22 +122,45 @@ public class SimpleMonster : MonoBehaviour
 
     public void BuildPathToPoint(GameObject point)
     {
-        
-        pathFinding.FindPath(this.gameObject.transform.position, point.transform.position);
-        destinations.Clear();
-        for (int i = 0; i < grid.path.Count; i++)
+        if(grid != null)
         {
-            destinations.Add(grid.path[i].worldPosition);
-        }
+            pathFinding.FindPath(this.gameObject.transform.position, point.transform.position);
+            destinations.Clear();
+            for (int i = 0; i < grid.path.Count; i++)
+            {
+                destinations.Add(grid.path[i].worldPosition);
+            }
+        }      
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player")
+        if(collision.gameObject.tag == "Player")
         {
             print("Skill issue");
             Debug.LogError("Eaten by monster");
             SceneManager.LoadScene("SimpleGameOver");
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(destinations.Count > 0)
+        {
+            for (int i = 0; i < destinations.Count - 1; i++)
+            {
+                Gizmos.color = Color.black;
+                Gizmos.DrawLine(destinations[i], destinations[i + 1]);
+
+                Color gColor;
+                gColor = Color.black;
+                gColor.a = 0.5f;
+
+                Gizmos.color = gColor;
+                Gizmos.DrawSphere(destinations[i], 2f);
+            }
+
+            Gizmos.DrawSphere(destinations[destinations.Count - 1], 2f);
         }
     }
 }

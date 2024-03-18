@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class MonsterDirector : MonoBehaviour
 {
+    public float distanceToPlayer;
     [Header("Monster script")]
     SimpleMonster monsterScript;
 
     [Header("References")]
     [SerializeField] List<ChunkWaypoints> chunkWaypoints;
+    [SerializeField] Eyes eyeScript;
+
+    [Header("Attack radius")]
+    [SerializeField] float bigRadius;
+    [SerializeField] float mediumRadius;
+    [SerializeField] float smallRadius;
 
     [Header("Debug")]
     public List<Waypoint> patrolWaypoints;
@@ -18,45 +25,99 @@ public class MonsterDirector : MonoBehaviour
     int currentIndex;
     int currentChunkIndex;
 
-    public bool globalPatrol = true;
-    public bool investigateRoom = false;
     public bool chasing = false;
+    bool playerIsDead = false;
+
+    GameObject deflectionPoint;
+    
 
     void Awake()
     {
-        FetchAllPatrolWaypoints();
+
+        monsterScript = GetComponent<SimpleMonster>();
+
     }
 
     void Start()
     {
-        monsterScript = GetComponent<SimpleMonster>();
+        chasing = false;
         //InvestigateChunk(1);
-
+        FetchAllPatrolWaypoints();  
         PatrolAround(FindClosestWaypointToTarget(transform));
+
+
     }
 
     private void Update()
     {
-        if (monsterScript.pointsToVisit.Count == 0 && monsterScript.destinations.Count == 0)
-        {
-            if(globalPatrol)
-                PatrolAround(FindClosestWaypointToTarget(transform));
+
+        Vector3 vectorToPlayer = monsterScript.player.transform.position - transform.position;
+        vectorToPlayer = new Vector3(vectorToPlayer.x, 0f, vectorToPlayer.z);
+
+        distanceToPlayer = vectorToPlayer.magnitude;
+
+        if (monsterScript.pointsToVisit.Count == 0 && monsterScript.destinations.Count == 0 && !chasing)
+        { 
+            PatrolAround(FindClosestWaypointToTarget(transform));
         }
-        else if(investigateRoom)
+        
+       // if(investigateRoom && !chasing)
+       // {
+       //     Debug.LogError("Start investigating");
+       //     InvestigateChunk(FindClosestWaypointToTarget(monsterScript.player.transform));
+       //     Investigate(false);
+       // }
+
+
+        if(distanceToPlayer < mediumRadius && distanceToPlayer > smallRadius)
         {
-            InvestigateChunk(FindClosestWaypointToTarget(monsterScript.player.transform));
-            Investigate(false);
+
+            if(!chasing)
+            {
+                Debug.LogError("Started chasing");
+                monsterScript.ClearStackOfPoints();
+                chasing = true;
+
+                deflectionPoint = FetchDeflectionPoint(monsterScript.player.transform);
+            }
+            else
+            {
+                if (!eyeScript.eyesClosed)
+                {
+                    // Chase directly
+                }
+                else if (eyeScript.eyesClosed && monsterScript.destinations.Count == 0)
+                {
+                    // Investigate the area
+                }
+            }
+        }
+
+        // Insta kill with no escape
+        if(distanceToPlayer < smallRadius && !playerIsDead)
+        {
+            playerIsDead = true;
+
+            monsterScript.ClearStackOfPoints();
+            monsterScript.pointsToVisit.Add(monsterScript.player);
+            //Chase(true);
+            monsterScript.moveSpeed *= 2f;
+            
+            monsterScript.rb.velocity = vectorToPlayer.normalized * monsterScript.moveSpeed;
+        }
+
+        // Monster lost you, so goes back to patrolling
+        if(distanceToPlayer > bigRadius && chasing)
+        {
+            chasing = false;
+            Debug.LogError("Stopped chasing");
+            PatrolAround(FindClosestWaypointToTarget(transform));
         }
     }
 
-    public void Chase(bool argument)
+    public void Investigate()
     {
-        chasing = argument;
-    }
-
-    public void Investigate(bool argument)
-    {
-        investigateRoom = argument;
+        InvestigateChunk(FindClosestWaypointToTarget(monsterScript.player.transform));
     }
 
     void FetchAllPatrolWaypoints()
@@ -102,17 +163,33 @@ public class MonsterDirector : MonoBehaviour
             }
 
             currentIndex = closestIndex;
-            Debug.LogError("Index number is " + closestIndex);
+            //Debug.LogError("Index number is " + closestIndex);
             return patrolWaypoints[closestIndex].chunkNumber;
         }
         else
         {
-            return patrolWaypoints[currentIndex].chunkNumber;
+            return 0;
         }       
+    }
+
+    public GameObject FetchDeflectionPoint(Transform target)
+    {
+        List<GameObject> chunkList = new List<GameObject>();
+        int chunkIndex = FindClosestWaypointToTarget(target);
+
+        for (int i = 0; i < allWaypoints.Count; i++)
+        {
+            if (allWaypoints[i] != null && allWaypoints[i].chunkNumber == chunkIndex)
+                return(allWaypoints[i].waypoint.gameObject);
+        }
+
+        return(null);
     }
 
     public void InvestigateChunk(int chunkIndex)
     {
+        Debug.LogError("Start investigating");
+
         List<GameObject> chunkList = new List<GameObject>();
 
        for(int i = 0; i < allWaypoints.Count; i++)
@@ -121,25 +198,13 @@ public class MonsterDirector : MonoBehaviour
                 chunkList.Add(allWaypoints[i].waypoint.gameObject);
        }
 
-        monsterScript.pointsToVisit.Clear();
+        monsterScript.ClearStackOfPoints();
         monsterScript.pointsToVisit.AddRange(chunkList);
     }
 
-    public Waypoint RetrieveNextWaypoint()
-    {
-        int dir = Random.Range(0, 2);
-        if(dir == 1)
-        {
-            currentIndex = (currentIndex + 1) % patrolWaypoints.Count;
-            return patrolWaypoints[currentIndex];
-        }
-        else
-        {
-            currentIndex = (currentIndex - 1 + patrolWaypoints.Count) % patrolWaypoints.Count;
-            return patrolWaypoints[currentIndex];
-        }
-    }
+   
 
+    // Returns all of the patrol paoints of the corresponding chunk and clears the current buffer
     public void PatrolAround(int targetIndex)
     {
         // Find the closest patrol point 
@@ -158,30 +223,40 @@ public class MonsterDirector : MonoBehaviour
             targetIndex = (targetIndex + 1) % patrolWaypoints.Count;
         }
 
-        
-
-        monsterScript.pointsToVisit.Clear();
+        monsterScript.ClearStackOfPoints();
         monsterScript.pointsToVisit.AddRange(chunkList);
-        Debug.LogError("Patrol list is " + chunkList.Count);
-        Debug.LogError("Points to visit is " + monsterScript.pointsToVisit.Count);
-
-
     }
 
-   //private void OnDrawGizmos()
-   //{
-   //    for (int i = 0; i < patrolWaypoints.Count - 1; i++)
-   //    {
-   //        Gizmos.color = Color.magenta;
-   //        Gizmos.DrawSphere(patrolWaypoints[i].waypoint.position, 1);
-   //        Gizmos.DrawLine(patrolWaypoints[i].waypoint.position, patrolWaypoints[i + 1].waypoint.position);
-   //    }
-   //
-   //    //for (int i = 0; i < chunkWaypoints.Count - 1; i++)
-   //    //{
-   //    //    Gizmos.color = Color.green;
-   //    //    Gizmos.DrawSphere(waypoints[i].waypoint.position, 1);
-   //    //    Gizmos.DrawLine(waypoints[i].waypoint.position, waypoints[i + 1].waypoint.position);
-   //    //}
-   //}
+   private void OnDrawGizmos()
+   {
+        Color gColor;
+
+        if(patrolWaypoints.Count > 0)
+        {
+            for (int i = 0; i < patrolWaypoints.Count - 1; i++)
+            {
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawSphere(patrolWaypoints[i].waypoint.position, 1);
+                Gizmos.DrawLine(patrolWaypoints[i].waypoint.position, patrolWaypoints[i + 1].waypoint.position);
+            }
+        }
+
+        gColor = Color.red;
+        gColor.a = 0.5f;
+       
+        Gizmos.color = gColor;
+        Gizmos.DrawSphere(transform.position, smallRadius);
+
+        gColor = Color.green;
+        gColor.a = 0.5f;
+
+        Gizmos.color = gColor;
+        Gizmos.DrawSphere(transform.position, bigRadius);
+
+        gColor = Color.blue;
+        gColor.a = 0.5f;
+
+        Gizmos.color = gColor;
+        Gizmos.DrawSphere(transform.position, mediumRadius);
+    }
 }
