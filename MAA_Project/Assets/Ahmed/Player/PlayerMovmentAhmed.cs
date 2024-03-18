@@ -15,6 +15,7 @@ public class PlayerMovmentAhmed : MonoBehaviour
     float verticalRotStore;
     Vector3 moveInput;
     Camera cam;
+    [SerializeField] Camera eyesCamera;
     private void Start()
     {
         if (cam == null)
@@ -30,6 +31,9 @@ public class PlayerMovmentAhmed : MonoBehaviour
 
         cam.transform.position = lookPoint.position;
         cam.transform.rotation = lookPoint.rotation;
+
+        eyesCamera.transform.position = lookPoint.position;
+        eyesCamera.transform.rotation = lookPoint.rotation;
     }
     private void Update()
     {

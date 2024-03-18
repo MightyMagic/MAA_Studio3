@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PuzzleManagerAhmed : MonoBehaviour
 {
@@ -117,6 +118,8 @@ public class PuzzleManagerAhmed : MonoBehaviour
         if (allMatch)
         {
             Debug.Log("Success");
+            // Delete next line later
+            SceneManager.LoadScene(2);
         }
         else
         {

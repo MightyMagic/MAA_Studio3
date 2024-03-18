@@ -27,6 +27,8 @@ public class KeepInPlace : MonoBehaviour
 
     public void FetchPosition()
     {
+        Debug.LogError("Fetching position of " + markObject.name);
+
         RaycastHit hit;
         if (Physics.Raycast(this.gameObject.transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayer))
         {
@@ -50,16 +52,18 @@ public class KeepInPlace : MonoBehaviour
             newAngle = newRotation * Quaternion.Inverse(oldRotation);
 
            
-            if(gameObject.name == "Player")
-            {
-                movement.currentRotation = newRotation;
-            }
-            else
-            {
-                gameObject.transform.rotation = newAngle * gameObject.transform.rotation;
-            }
-           
-            
+            //if(gameObject.name == "Player")
+            //{
+            //    movement.currentRotation = newRotation;
+            //}
+            //else
+            //{
+            //    gameObject.transform.rotation = newAngle * gameObject.transform.rotation;
+            //}
+
+            gameObject.transform.rotation = newAngle * gameObject.transform.rotation;
+
+
 
             //gameObject.transform.rotation = newAngle * gameObject.transform.rotation;
             //gameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, markObject.transform.rotation.y, 0f));
@@ -68,6 +72,21 @@ public class KeepInPlace : MonoBehaviour
 
             gameObject.transform.position = new Vector3(markObject.transform.position.x, gameObject.transform.position.y, markObject.transform.position.z);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Set the color of the Gizmo
+        Gizmos.color = Color.blue;
+
+        // Get the position of the GameObject
+        Vector3 startPos = this.gameObject.transform.position;
+
+        // Get the direction the GameObject is facing
+        Vector3 direction = Vector3.down;
+
+        // Draw the ray in the scene view
+        Gizmos.DrawRay(startPos, direction * 5f);
     }
 }
 

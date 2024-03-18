@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PuzzleCatcher : MonoBehaviour
@@ -18,6 +16,9 @@ public class PuzzleCatcher : MonoBehaviour
     public float activationDistance = 6f;
     bool currentIsCaptured;
     float angle;
+
+    [Header("Monster")]
+    [SerializeField] MonsterDirector monsterDirector;
 
     private void Update()
     {
@@ -51,6 +52,11 @@ public class PuzzleCatcher : MonoBehaviour
                         if (puzzleWords[i].currentMeter >= puzzleMeter.meterThreshold && !puzzleWords[i].captured)
                         {
                             Debug.Log("you captured the text");
+
+                            // tell the monster to investigate
+                            monsterDirector.Investigate();
+                            //
+
                             CapturedWords.Add(puzzleWords[i]);
                             puzzleWords[i].captured = true;
                             currentIsCaptured = puzzleWords[i].captured;
@@ -62,6 +68,8 @@ public class PuzzleCatcher : MonoBehaviour
                     {
                         puzzleWindow.SetActive(false);
                         puzzleMeter.gameObject.SetActive(false);
+
+                        puzzleWords[i].currentMeter = 0;
                     }
                 }
             }

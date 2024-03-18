@@ -38,29 +38,50 @@ public class ChunkShuffle : MonoBehaviour
 
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.Escape))
-        {                                                                                
-           RearrangeChunks();
-           StartCoroutine(RebuildGrid());
+       if(Input.GetKeyDown(KeyCode.Space))
+        {
+            //SaveRelativeObjectsPositions();
+            //
+            //RearrangeChunks();
+            //StartCoroutine(RebuildGrid());
+            //
+            //MoveObjectsToRelativePositions();
+
+            FullLayoutSwap();
         } 
     }
 
-    private void RearrangeChunks()
+    public void FullLayoutSwap()
+    {
+        SaveRelativeObjectsPositions();
+
+        RearrangeChunks();
+        StartCoroutine(RebuildGrid());
+
+        MoveObjectsToRelativePositions();
+    }
+
+    private void SaveRelativeObjectsPositions()
     {
         for (int i = 0; i < objectsInPlace.Count; i++)
         {
             objectsInPlace[i].FetchPosition();
         }
+    }
 
-        PlaceChunks(FetchNextChunk(currentIndex));
-        currentIndex = (currentIndex + 1) % configurations.Count;
-
+    private void MoveObjectsToRelativePositions()
+    {
         for (int i = 0; i < objectsInPlace.Count; i++)
         {
             objectsInPlace[i].MoveToPosition();
         }
     }
 
+    public void RearrangeChunks()
+    {
+        PlaceChunks(FetchNextChunk(currentIndex));
+        currentIndex = (currentIndex + 1) % configurations.Count;   
+    }
     private ChunkConfiguration FetchNextChunk(int index)
     {
         return configurations[(index + 1) % configurations.Count];
@@ -73,9 +94,6 @@ public class ChunkShuffle : MonoBehaviour
             chunk.anchorObjects[i].chunkObject.transform.position = chunk.anchorObjects[i].anchorPosition;
             chunk.anchorObjects[i].chunkObject.transform.rotation = Quaternion.Euler(chunk.anchorObjects[i].anchorAngle);
         }
-
-        aStarGrid.CreateGrid();
-        monsterScript.ClearStackOfPoints();
 
         // Hide certain objects
         for (int j = 0; j < chunk.objectsToHide.Count; j++)
@@ -96,9 +114,21 @@ public class ChunkShuffle : MonoBehaviour
 
     public IEnumerator RebuildGrid()
     {
-        yield return new WaitForSeconds(0.5f);
-        aStarGrid.CreateGrid();
+        //monsterScript.gridIsBuilt = false;
         monsterScript.ClearStackOfPoints();
+
+
+        yield return new WaitForSeconds(0.5f);
+
+        //for (int i = 0; i < objectsInPlace.Count; i++)
+        //{
+        //    objectsInPlace[i].CheckForValidity();
+        //}
+        aStarGrid.CreateGrid();
+       
+
+        yield return new WaitForSeconds(0.5f);
+        //monsterScript.gridIsBuilt = true;
     }
 
    
