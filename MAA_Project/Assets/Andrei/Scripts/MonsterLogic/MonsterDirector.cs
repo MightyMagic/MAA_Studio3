@@ -13,22 +13,27 @@ public class MonsterDirector : MonoBehaviour
     [SerializeField] List<ChunkWaypoints> chunkWaypoints;
     [SerializeField] Eyes eyeScript;
 
+    [SerializeField] LayerMask visibleMask;
+    LayerMask startingMask;
+
     [Header("Attack radius")]
     [SerializeField] float bigRadius;
     [SerializeField] float mediumRadius;
     [SerializeField] float smallRadius;
 
     [Header("Debug")]
-    public List<Waypoint> patrolWaypoints;
-    public List<Waypoint> allWaypoints;
+    private List<Waypoint> patrolWaypoints = new List<Waypoint>();
+    private List<Waypoint> allWaypoints = new List<Waypoint>();
 
     int currentIndex;
     int currentChunkIndex;
 
     public bool chasing = false;
+    public bool patrolling = true;
     bool playerIsDead = false;
 
     GameObject deflectionPoint;
+    GameObject chasingPoint;
     
 
     void Awake()
@@ -36,10 +41,13 @@ public class MonsterDirector : MonoBehaviour
 
         monsterScript = GetComponent<SimpleMonster>();
 
+        //startingMask = this.gameObject.GetComponent<LayerMask>();
+
     }
 
     void Start()
     {
+        patrolling = true;
         chasing = false;
         //InvestigateChunk(1);
         FetchAllPatrolWaypoints();  
@@ -56,8 +64,9 @@ public class MonsterDirector : MonoBehaviour
 
         distanceToPlayer = vectorToPlayer.magnitude;
 
-        if (monsterScript.pointsToVisit.Count == 0 && monsterScript.destinations.Count == 0 && !chasing)
-        { 
+        if (monsterScript.pointsToVisit.Count == 0 && monsterScript.destinations.Count == 0 && !chasing && patrolling)
+        {
+            //patrolling = true;
             PatrolAround(FindClosestWaypointToTarget(transform));
         }
         
@@ -77,19 +86,37 @@ public class MonsterDirector : MonoBehaviour
                 Debug.LogError("Started chasing");
                 monsterScript.ClearStackOfPoints();
                 chasing = true;
+                patrolling = false;
 
                 deflectionPoint = FetchDeflectionPoint(monsterScript.player.transform);
+                chasingPoint = monsterScript.player;
             }
             else
             {
-                if (!eyeScript.eyesClosed)
+                if(monsterScript.pointsToVisit.Count == 0)
                 {
-                    // Chase directly
+                    if (!eyeScript.eyesClosed)
+                    {  
+                        monsterScript.pointsToVisit.Add(chasingPoint);
+                    }
+                    else if (eyeScript.eyesClosed)
+                    {
+                        monsterScript.pointsToVisit.Add(FetchDeflectionPoint(monsterScript.player.transform));
+                    }
                 }
-                else if (eyeScript.eyesClosed && monsterScript.destinations.Count == 0)
+                else if(monsterScript.pointsToVisit.Count > 1)
                 {
-                    // Investigate the area
+                    if (!eyeScript.eyesClosed)
+                    {
+                        monsterScript.pointsToVisit[0] = chasingPoint;
+                    }
+                    else if (eyeScript.eyesClosed)
+                    {
+                        monsterScript.pointsToVisit[0] = deflectionPoint;
+
+                    }
                 }
+                
             }
         }
 
@@ -101,15 +128,18 @@ public class MonsterDirector : MonoBehaviour
             monsterScript.ClearStackOfPoints();
             monsterScript.pointsToVisit.Add(monsterScript.player);
             //Chase(true);
-            monsterScript.moveSpeed *= 2f;
-            
-            monsterScript.rb.velocity = vectorToPlayer.normalized * monsterScript.moveSpeed;
+            monsterScript.moveSpeed *= 5f;
+
+            // = visibleMask;
+            //monsterScript.rb.velocity = vectorToPlayer.normalized * monsterScript.moveSpeed;
         }
 
         // Monster lost you, so goes back to patrolling
-        if(distanceToPlayer > bigRadius && chasing)
+        if(distanceToPlayer > mediumRadius && chasing)
         {
+            patrolling = true;
             chasing = false;
+            playerIsDead = false;
             Debug.LogError("Stopped chasing");
             PatrolAround(FindClosestWaypointToTarget(transform));
         }
@@ -180,10 +210,10 @@ public class MonsterDirector : MonoBehaviour
         for (int i = 0; i < allWaypoints.Count; i++)
         {
             if (allWaypoints[i] != null && allWaypoints[i].chunkNumber == chunkIndex)
-                return(allWaypoints[i].waypoint.gameObject);
+                chunkList.Add(allWaypoints[i].waypoint.gameObject);
         }
 
-        return(null);
+        return chunkList[Random.Range(0, chunkList.Count)];
     }
 
     public void InvestigateChunk(int chunkIndex)
@@ -242,21 +272,31 @@ public class MonsterDirector : MonoBehaviour
         }
 
         gColor = Color.red;
-        gColor.a = 0.5f;
+        gColor.a = 0.2f;
        
         Gizmos.color = gColor;
         Gizmos.DrawSphere(transform.position, smallRadius);
 
         gColor = Color.green;
-        gColor.a = 0.5f;
+        gColor.a = 0.2f;
 
         Gizmos.color = gColor;
         Gizmos.DrawSphere(transform.position, bigRadius);
 
         gColor = Color.blue;
-        gColor.a = 0.5f;
+        gColor.a = 0.2f;
 
         Gizmos.color = gColor;
         Gizmos.DrawSphere(transform.position, mediumRadius);
+
+
+        for(int i = 0; i < chunkWaypoints.Count; i++)
+        {
+            for(int j = 0; j < chunkWaypoints[i].waypoints.Count - 1; j++)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(chunkWaypoints[i].waypoints[j].waypoint.position, chunkWaypoints[i].waypoints[j+1].waypoint.position);
+            }
+        }
     }
 }

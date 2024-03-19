@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class ChunkShuffle : MonoBehaviour
 {
     [Header("A star")]
-    [SerializeField] Grid aStarGrid;
+    [SerializeField] GridX aStarGrid;
 
     [Header("Monster")]
     [SerializeField] SimpleMonster monsterScript;
@@ -33,13 +34,15 @@ public class ChunkShuffle : MonoBehaviour
             }
         }
 
-        StartCoroutine(RebuildGrid());
+        aStarGrid.CreateGrid();
+
+        //StartCoroutine(RebuildGrid(false));
     }
 
     void Update()
     {
        if(Input.GetKeyDown(KeyCode.Space))
-        {
+       {
             //SaveRelativeObjectsPositions();
             //
             //RearrangeChunks();
@@ -47,8 +50,18 @@ public class ChunkShuffle : MonoBehaviour
             //
             //MoveObjectsToRelativePositions();
 
-            FullLayoutSwap();
-        } 
+            //FullLayoutSwap();
+
+            StartCoroutine(FullLAyoutSwapCoroutine());
+       }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            aStarGrid.CreateGrid();
+            monsterScript.ClearStackOfPoints();
+        }
+       
+
     }
 
     public void FullLayoutSwap()
@@ -56,31 +69,67 @@ public class ChunkShuffle : MonoBehaviour
         SaveRelativeObjectsPositions();
 
         RearrangeChunks();
-        StartCoroutine(RebuildGrid());
 
         MoveObjectsToRelativePositions();
+
+        aStarGrid.CreateGrid();
+
+        //StartCoroutine(RebuildGrid());
+
+        monsterScript.ClearStackOfPoints();
+
+        //aStarGrid.CreateGrid();
+
     }
 
-    private void SaveRelativeObjectsPositions()
+    public IEnumerator FullLAyoutSwapCoroutine()
     {
+        //StopAllCoroutines();
+        // disable the character controller
+        monsterScript.player.GetComponent<CharacterController>().enabled = false;
+        SaveRelativeObjectsPositions();
+        RearrangeChunks();
+        MoveObjectsToRelativePositions();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
+        aStarGrid.CreateGrid();
+        monsterScript.player.GetComponent<CharacterController>().enabled = true;
+        // enable the character controller
+        monsterScript.ClearStackOfPoints();
+        yield return new WaitForEndOfFrame();
+    }
+
+    private async void SaveRelativeObjectsPositions()
+    {
+        print(1);
         for (int i = 0; i < objectsInPlace.Count; i++)
         {
             objectsInPlace[i].FetchPosition();
         }
+        print(2);
+
     }
 
     private void MoveObjectsToRelativePositions()
     {
+        print(7);
         for (int i = 0; i < objectsInPlace.Count; i++)
         {
             objectsInPlace[i].MoveToPosition();
         }
+        print(8);
     }
 
     public void RearrangeChunks()
     {
+        print(3);
         PlaceChunks(FetchNextChunk(currentIndex));
-        currentIndex = (currentIndex + 1) % configurations.Count;   
+        currentIndex = (currentIndex + 1) % configurations.Count;
+        print(4);
+
+       
+
     }
     private ChunkConfiguration FetchNextChunk(int index)
     {
@@ -107,31 +156,19 @@ public class ChunkShuffle : MonoBehaviour
         {
             chunk.objectsToReveal[j].SetActive(true);
         }
-
-       //aStarGrid.CreateGrid();
-       //monsterScript.ClearStackOfPoints();
     }
-
+    
     public IEnumerator RebuildGrid()
     {
-        //monsterScript.gridIsBuilt = false;
-        monsterScript.ClearStackOfPoints();
+ 
+        yield return new WaitForSeconds(0.1f);
 
-
-        yield return new WaitForSeconds(0.5f);
-
-        //for (int i = 0; i < objectsInPlace.Count; i++)
-        //{
-        //    objectsInPlace[i].CheckForValidity();
-        //}
         aStarGrid.CreateGrid();
-       
 
-        yield return new WaitForSeconds(0.5f);
-        //monsterScript.gridIsBuilt = true;
+        monsterScript.ClearStackOfPoints();
     }
+    
 
-   
 
     public void AppendNewConfiguration()
     {

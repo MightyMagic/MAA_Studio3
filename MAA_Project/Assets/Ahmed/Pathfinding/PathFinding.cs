@@ -7,10 +7,10 @@ public class PathFinding : MonoBehaviour
 {
     //public Transform seeker;
     //public Transform target;
-    Grid grid;
+    GridX grid;
     private void Awake()
     {
-        grid = GetComponent<Grid>();
+        grid = GetComponent<GridX>();
     }
 
     public void FindPath(Vector3 startPos, Vector3 targetPos)

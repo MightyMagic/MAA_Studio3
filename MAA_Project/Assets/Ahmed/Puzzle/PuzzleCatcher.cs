@@ -54,7 +54,10 @@ public class PuzzleCatcher : MonoBehaviour
                             Debug.Log("you captured the text");
 
                             // tell the monster to investigate
-                            monsterDirector.Investigate();
+                            if(!monsterDirector.chasing)
+                            {
+                                monsterDirector.Investigate();
+                            }
                             //
 
                             CapturedWords.Add(puzzleWords[i]);

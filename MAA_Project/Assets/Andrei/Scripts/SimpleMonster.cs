@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public class SimpleMonster : MonoBehaviour
 {
     [SerializeField] PathFinding pathFinding;
-    [SerializeField] Grid grid;
+    [SerializeField] GridX grid;
 
    
     public float moveSpeed;

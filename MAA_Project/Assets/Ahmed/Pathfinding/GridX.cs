@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class GridX : MonoBehaviour
 {
     Node[,] grid;
     public Vector2 gridWorldSize;
@@ -28,6 +28,8 @@ public class Grid : MonoBehaviour
     }
     public void CreateGrid()
     {
+        print(5);
+
         grid = new Node[gridSizeX, gridSizeY];
         Vector3 worldBottomleft = transform.position -
         Vector3.right * gridWorldSize.x/2 -
@@ -43,6 +45,7 @@ public class Grid : MonoBehaviour
                 grid[x,y] = new Node(walkable, worldPoint,x,y);
             }
         }
+        print(6);
     }
 
     public List<Node> GetNeighbours(Node node)

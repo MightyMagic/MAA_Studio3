@@ -1,77 +1,110 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class KeepInPlace : MonoBehaviour
 {
     [SerializeField] LayerMask groundLayer;
-
-    [SerializeField] BasicFpsMovement movement;
-
-
-    private GameObject markObject;
+    [SerializeField] GameObject markObjectPrefab;
     Quaternion newAngle;
 
     Quaternion oldRotation;
     Quaternion newRotation;
 
-    void Start()
+    PlayerMovmentAhmed playerMovement;
+
+    GameObject markObject;
+
+    Transform currentFloor;
+    Vector3 offset;
+
+    void Awake()
     {
-        markObject = new GameObject("mark_" + this.name);
+        markObject = Instantiate(markObjectPrefab);
+        markObject.name = "mark_" + gameObject.name;
+
+        if (gameObject.tag == "Player")
+        {
+            playerMovement = gameObject.GetComponent<PlayerMovmentAhmed>();
+        }
+    }
+
+    private void Start()
+    {
+        FetchPosition();
     }
 
     void Update()
     {
-        
+        //FetchPosition();
     }
 
     public void FetchPosition()
     {
-        Debug.LogError("Fetching position of " + markObject.name);
+        //Debug.LogError("Fetching position of " + markObject.name);
 
         RaycastHit hit;
         if (Physics.Raycast(this.gameObject.transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayer))
         {
+            Debug.Log("Hit " + hit.collider.gameObject.name);
 
-            oldRotation = markObject.transform.rotation;
+            //oldRotation = markObject.transform.rotation;
+
+            markObject.transform.rotation = gameObject.transform.rotation;
+            var point = hit.point;
+            point.y = gameObject.transform.position.y;
             markObject.transform.position = hit.point;
 
-            Transform currentFloor = hit.transform;
+            //// memorizing the floor tile and offset
+            currentFloor = hit.transform;
+
+            Debug.LogError("Current floor is " + currentFloor.name);
+            //offset = gameObject.transform.position - currentFloor.position;
 
             markObject.transform.parent = currentFloor.transform;
+            //markObject.transform.localScale = Vector3.one;
           
         }
     }
 
     public void MoveToPosition()
     {
-        if(markObject != null)
+        if(markObject != null && (markObject.transform.position - gameObject.transform.position).magnitude > 6f)
         {
 
-            newRotation = markObject.transform.rotation;
-            newAngle = newRotation * Quaternion.Inverse(oldRotation);
+            //await Task.Delay(100);
 
-           
-            //if(gameObject.name == "Player")
-            //{
-            //    movement.currentRotation = newRotation;
-            //}
-            //else
-            //{
-            //    gameObject.transform.rotation = newAngle * gameObject.transform.rotation;
-            //}
+           // newRotation = markObject.transform.rotation;
+           // newAngle = newRotation * Quaternion.Inverse(oldRotation);
+           //
+           //
+           // gameObject.transform.rotation = newAngle * gameObject.transform.rotation;
 
-            gameObject.transform.rotation = newAngle * gameObject.transform.rotation;
+            Vector3 newPos = new Vector3(markObject.transform.position.x, gameObject.transform.position.y, markObject.transform.position.z);
+            gameObject.transform.position = newPos;
+            //gameObject.transform.position = markObject.transform.position;
 
+            gameObject.transform.rotation = markObject.transform.rotation;
 
-
-            //gameObject.transform.rotation = newAngle * gameObject.transform.rotation;
-            //gameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, markObject.transform.rotation.y, 0f));
-
-
-
-            gameObject.transform.position = new Vector3(markObject.transform.position.x, gameObject.transform.position.y, markObject.transform.position.z);
+            //gameObject.transform.position = currentFloor.transform.position + offset;        
         }
+    }
+
+    void SaveVector3(Vector3 vector, string key)
+    {
+        PlayerPrefs.SetFloat(key + "_X", vector.x);
+        PlayerPrefs.SetFloat(key + "_Y", vector.y);
+        PlayerPrefs.SetFloat(key + "_Z", vector.z);
+        PlayerPrefs.Save();
+    }
+
+    Vector3 LoadVector3(string key)
+    {
+        float x = PlayerPrefs.GetFloat(key + "_X", 0f);
+        float y = PlayerPrefs.GetFloat(key + "_Y", 0f);
+        float z = PlayerPrefs.GetFloat(key + "_Z", 0f);
+        return new Vector3(x, y, z);
     }
 
     private void OnDrawGizmos()
@@ -87,18 +120,15 @@ public class KeepInPlace : MonoBehaviour
 
         // Draw the ray in the scene view
         Gizmos.DrawRay(startPos, direction * 5f);
+
+        Gizmos.color = Color.black;
+
+        if (markObject != null)
+        {
+            Vector3 direction1 = transform.position - markObject.transform.position;
+            Gizmos.DrawRay(markObject.transform.position, direction1);
+        }
+       
     }
 }
 
-/*
-  //newAngle = Quaternion.Euler(newRotation.x - oldRotation.x, newRotation.y - oldRotation.y, newRotation.z - oldRotation.z);
-
-            print("Old player angle: " + gameObject.transform.rotation.x + ", " + gameObject.transform.rotation.y + ", " + gameObject.transform.rotation.z);
-
-            print("Old angle: " + oldRotation.x + ", " + oldRotation.y + ", " + oldRotation.z);
-            print("New angle: " +  newRotation.x + ", " + newRotation.y + ", " + newRotation.z);
-            print("Difference: " + newAngle.x + ", " + newAngle.y + ", " + newAngle.z);
-
-print("New player angle: " + gameObject.transform.rotation.x + ", " + gameObject.transform.rotation.y + ", " + gameObject.transform.rotation.z);
-            //gameObject.transform.rotation = newAngle * gameObject.transform.rotation;
-*/
