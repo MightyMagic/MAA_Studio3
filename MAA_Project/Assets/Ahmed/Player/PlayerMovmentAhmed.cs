@@ -9,7 +9,7 @@ public class PlayerMovmentAhmed : MonoBehaviour
     [SerializeField] float mouseVerticalSpeed;
     [SerializeField] float mouseHorizontalSpeed;
     [SerializeField] Transform lookPoint;
-    [SerializeField] bool openPuzzleWindow;
+    //[SerializeField] bool openPuzzleWindow;
     [SerializeField] Canvas canvas;
     [SerializeField] GameObject puzzleSpace;
     float verticalRotStore;
@@ -39,13 +39,13 @@ public class PlayerMovmentAhmed : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse1)) 
         {
-            openPuzzleWindow = true;
+            //openPuzzleWindow = true;
             puzzleSpace.SetActive(true);
             canvas.enabled = true;
         }
         else
         {
-            openPuzzleWindow = false;
+            //openPuzzleWindow = false;
             puzzleSpace.SetActive(false);
             canvas.enabled = false;
         }
