@@ -25135,7 +25135,6 @@ MonoBehaviour:
   mouseVerticalSpeed: 2
   mouseHorizontalSpeed: 2
   lookPoint: {fileID: 313049620}
-  openPuzzleWindow: 0
   canvas: {fileID: 348520575}
   puzzleSpace: {fileID: 696398036}
   eyesCamera: {fileID: 270249488}
