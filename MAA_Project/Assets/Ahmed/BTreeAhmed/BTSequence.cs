@@ -23,6 +23,7 @@ public class BTSequence : BTNode
                 case BTNodeState.SUCCESS:
                     break;
                 case BTNodeState.FAILURE:
+                    _nodestate = BTNodeState.FAILURE;
                     return _nodestate;
                 default:
                     break;

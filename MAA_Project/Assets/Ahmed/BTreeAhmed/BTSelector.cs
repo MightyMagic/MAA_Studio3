@@ -12,7 +12,6 @@ public class BTSelector : BTNode
 
     public override BTNodeState Evaluate()
     {
-        
         foreach (BTNode node in bTNodes)
         {
             switch (node.Evaluate())
@@ -24,6 +23,7 @@ public class BTSelector : BTNode
                     _nodestate = BTNodeState.SUCCESS;
                     return _nodestate;
                 case BTNodeState.FAILURE:
+                    _nodestate = BTNodeState.FAILURE;
                     break;
                 default:
                     break;
