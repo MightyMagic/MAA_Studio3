@@ -60,7 +60,11 @@ public class ChunkShuffle : MonoBehaviour
             aStarGrid.CreateGrid();
             monsterScript.ClearStackOfPoints();
         }
-       
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            RearrangeChunks();
+        }
 
     }
 
