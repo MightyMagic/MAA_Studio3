@@ -17,6 +17,8 @@ public class PuzzleManagerAhmed : MonoBehaviour
     [SerializeField] List<DuplicateTextEffect> duplicateTexts = new List<DuplicateTextEffect>();
     [SerializeField] float activationAngle = 50f;
 
+    [SerializeField] int gameCompleteSceneIndex;
+
     private void Update()
     {
         AddWordsToCanvas();
@@ -119,7 +121,7 @@ public class PuzzleManagerAhmed : MonoBehaviour
         {
             Debug.Log("Success");
             // Delete next line later
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(gameCompleteSceneIndex);
         }
         else
         {

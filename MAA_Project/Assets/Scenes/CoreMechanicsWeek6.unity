@@ -1504,6 +1504,7 @@ MonoBehaviour:
   - {fileID: 1628883117}
   - {fileID: 244084508}
   activationAngle: 15
+  gameCompleteSceneIndex: 2
 --- !u!4 &72727239
 Transform:
   m_ObjectHideFlags: 0

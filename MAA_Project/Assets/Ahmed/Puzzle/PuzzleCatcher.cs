@@ -17,6 +17,10 @@ public class PuzzleCatcher : MonoBehaviour
     bool currentIsCaptured;
     float angle;
 
+    [Header("Lore room")]
+    [SerializeField] LoreRoomManager loreManager;
+    private int phraseCount = 0;
+
     [Header("Monster")]
     [SerializeField] MonsterDirector monsterDirector;
 
@@ -28,54 +32,66 @@ public class PuzzleCatcher : MonoBehaviour
     {
         for(int i = puzzleWords.Count - 1; i >= 0; i--)
         {
-            float distatnce = Vector3.Distance(playerCamera.position, puzzleWords[i].transform.position);
-            Vector3 cameraToPuzzleText = puzzleWords[i].transform.position - playerCamera.position;
-            cameraToPuzzleText.Normalize();
-
-            Vector3 toLocal = puzzleWords[i].transform.InverseTransformPoint(playerCamera.position);
-
-            bool lookingFromFront = toLocal.z > lookThreshold;
-
-            angle = Vector3.Angle(playerCamera.forward, cameraToPuzzleText);
-
-            // in the text setup we are looking at the text from behind of its local position.
-            if (distatnce <= activationDistance && !puzzleWords[i].captured)
+            if (puzzleWords[i].gameObject.activeInHierarchy)
             {
-               currentIsCaptured = false;
-                if (angle < activationAngle && !lookingFromFront && !puzzleWords[i].captured)
+                float distatnce = Vector3.Distance(playerCamera.position, puzzleWords[i].transform.position);
+                Vector3 cameraToPuzzleText = puzzleWords[i].transform.position - playerCamera.position;
+                cameraToPuzzleText.Normalize();
+
+                Vector3 toLocal = puzzleWords[i].transform.InverseTransformPoint(playerCamera.position);
+
+                bool lookingFromFront = toLocal.z > lookThreshold;
+
+                angle = Vector3.Angle(playerCamera.forward, cameraToPuzzleText);
+
+                // in the text setup we are looking at the text from behind of its local position.
+                if (distatnce <= activationDistance && !puzzleWords[i].captured)
                 {
-                    puzzleWindow.SetActive(true);
-                    puzzleMeter.gameObject.SetActive(true);
-                    if (angle < captureAngle && !lookingFromFront && !puzzleWords[i].captured)
+                    currentIsCaptured = false;
+                    if (angle < activationAngle && !lookingFromFront && !puzzleWords[i].captured)
                     {
-                        puzzleMeter.PuzzleCatcherMeterUpdater(puzzleWords[i]);
-                        if (puzzleWords[i].currentMeter >= puzzleMeter.meterThreshold && !puzzleWords[i].captured)
+                        puzzleWindow.SetActive(true);
+                        puzzleMeter.gameObject.SetActive(true);
+                        if (angle < captureAngle && !lookingFromFront && !puzzleWords[i].captured)
                         {
-                            Debug.Log("you captured the text");
-
-                            // tell the monster to investigate
-                            if(!monsterDirector.chasing)
+                            puzzleMeter.PuzzleCatcherMeterUpdater(puzzleWords[i]);
+                            if (puzzleWords[i].currentMeter >= puzzleMeter.meterThreshold && !puzzleWords[i].captured)
                             {
-                                monsterDirector.Investigate();
+                                Debug.Log("you captured the text");
+
+                                // check for amount of captured rooms
+                                phraseCount++;
+                                //if enough, open the lore room
+                                if(phraseCount == loreManager.CurrentPhrasesToOpenRoom())
+                                {
+                                    loreManager.OpenLoreRoom();
+                                    // Open the lore room;
+                                }
+                                // tell the monster to investigate
+                                if (!monsterDirector.chasing && monsterDirector.isActiveAndEnabled)
+                                {
+                                    monsterDirector.Investigate();
+                                }
+                                //
+
+                                CapturedWords.Add(puzzleWords[i]);
+                                puzzleWords[i].captured = true;
+                                currentIsCaptured = puzzleWords[i].captured;
+                                // puzzleWords[i].gameObject.SetActive(false);
+
                             }
-                            //
-
-                            CapturedWords.Add(puzzleWords[i]);
-                            puzzleWords[i].captured = true;
-                            currentIsCaptured = puzzleWords[i].captured;
-                           // puzzleWords[i].gameObject.SetActive(false);
-                                                     
                         }
-                    }
-                    else
-                    {
-                        puzzleWindow.SetActive(false);
-                        puzzleMeter.gameObject.SetActive(false);
+                        else
+                        {
+                            puzzleWindow.SetActive(false);
+                            puzzleMeter.gameObject.SetActive(false);
 
-                        puzzleWords[i].currentMeter = 0;
+                            puzzleWords[i].currentMeter = 0;
+                        }
                     }
                 }
             }
+            
            
         }
         if (currentIsCaptured)

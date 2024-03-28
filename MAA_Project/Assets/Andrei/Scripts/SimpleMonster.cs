@@ -32,6 +32,11 @@ public class SimpleMonster : MonoBehaviour
     {
         //grid.CreateGrid();
 
+        if (PlayerPrefs.HasKey("MonsterSpeed"))
+        {
+            moveSpeed = PlayerPrefs.GetFloat("MonsterSpeed");
+        }
+
         rb = GetComponent<Rigidbody>();
         monsterDirector = GetComponent<MonsterDirector>();
 

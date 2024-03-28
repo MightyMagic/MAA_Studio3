@@ -10,6 +10,13 @@ public class Eyes : MonoBehaviour
     [SerializeField] MonsterDirector monsterDirector;
     [SerializeField] ChunkShuffle chunkShuffle;
 
+    [Header("Eyes delay")]
+    [SerializeField] float delayBetweenClosing;
+    [SerializeField] float delayBeforeClosing;
+    float closeTimer = 0f;
+    float closingEyesTimer = 0f;
+    bool closingEyes = false;
+
     [Header("Cameras")]
     [SerializeField] Camera openEyesCamera;
     [SerializeField] Camera closedEyesCamera;
@@ -27,8 +34,14 @@ public class Eyes : MonoBehaviour
 
     [SerializeField] ChunkShuffle shuffler;
 
+    PlayerMovmentAhmed movementScript;
+    float initialMovementSpeed;
+
     void Start()
     {
+
+        closeTimer = delayBetweenClosing + 0.1f;
+
         CloseEyes(false);
 
         timer = 0f;
@@ -38,25 +51,48 @@ public class Eyes : MonoBehaviour
 
         anxietySlider.maxValue = timings[0];
         anxietySlider.value = timings[0] - timer;
+
+        movementScript = GetComponent<PlayerMovmentAhmed>();
+        initialMovementSpeed = movementScript.playerSpeed;
     }
 
     void Update()
     {
         // Eye controls input
-        if(Input.GetKeyDown(eyesKey) || Input.GetKeyDown(KeyCode.Mouse1))
+        if(Input.GetKeyDown(eyesKey) || Input.GetKeyDown(KeyCode.Mouse1) && closeTimer > delayBetweenClosing)
         {
+            closeTimer = 0f;
+
             eyesClosed = true;
 
-            timer += 0.5f;
+            //timer += 2.5f;
+
+            movementScript.playerSpeed = initialMovementSpeed * 0.4f;
 
             CloseEyes(true);
         }
-        else if(Input.GetKeyUp(eyesKey) || Input.GetKeyUp(KeyCode.Mouse1))
+        else if(Input.GetKeyUp(eyesKey) || Input.GetKeyUp(KeyCode.Mouse1) && !closingEyes)
         {
-            eyesClosed= false;
-
-            CloseEyes(false);
+            closingEyes = true;
+            //eyesClosed= false;
+            
         }
+
+        if(closingEyes)
+        {
+            closingEyesTimer += Time.deltaTime;
+            if(closingEyesTimer > delayBeforeClosing)
+            {
+
+                closingEyesTimer = 0f;
+                eyesClosed = false;
+                closingEyes = false;
+                movementScript.playerSpeed = initialMovementSpeed;
+                CloseEyes(false);
+            }
+        }
+
+        closeTimer += Time.deltaTime;
 
         // Tracking the anxiety meter
         if (eyesClosed && timerRunning)
@@ -78,7 +114,8 @@ public class Eyes : MonoBehaviour
                 //shuffler.RearrangeChunks();
                 //StartCoroutine(shuffler.RebuildGrid());
 
-                shuffler.FullLayoutSwap();
+                //shuffler.FullLayoutSwap();
+                StartCoroutine(shuffler.FullLAyoutSwapCoroutine());
             }
         }
     }

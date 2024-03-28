@@ -34,6 +34,8 @@ public class MonsterDirector : MonoBehaviour
 
     GameObject deflectionPoint;
     GameObject chasingPoint;
+
+    float initialMonsterVelocity;
     
 
     void Awake()
@@ -52,6 +54,12 @@ public class MonsterDirector : MonoBehaviour
         //InvestigateChunk(1);
         FetchAllPatrolWaypoints();  
         PatrolAround(FindClosestWaypointToTarget(transform));
+
+        initialMonsterVelocity = monsterScript.moveSpeed;
+        if (PlayerPrefs.HasKey("MonsterSpeed"))
+        {
+            initialMonsterVelocity = PlayerPrefs.GetFloat("MonsterSpeed");
+        }
 
 
     }
@@ -140,6 +148,12 @@ public class MonsterDirector : MonoBehaviour
             patrolling = true;
             chasing = false;
             playerIsDead = false;
+
+            if(monsterScript.moveSpeed > initialMonsterVelocity)
+            {
+                monsterScript.moveSpeed = initialMonsterVelocity;
+            }
+
             Debug.LogError("Stopped chasing");
             PatrolAround(FindClosestWaypointToTarget(transform));
         }
@@ -289,14 +303,17 @@ public class MonsterDirector : MonoBehaviour
         Gizmos.color = gColor;
         Gizmos.DrawSphere(transform.position, mediumRadius);
 
-
-        for(int i = 0; i < chunkWaypoints.Count; i++)
+        if(chunkWaypoints.Count > 0)
         {
-            for(int j = 0; j < chunkWaypoints[i].waypoints.Count - 1; j++)
+            for (int i = 0; i < chunkWaypoints.Count; i++)
             {
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(chunkWaypoints[i].waypoints[j].waypoint.position, chunkWaypoints[i].waypoints[j+1].waypoint.position);
+                for (int j = 0; j < chunkWaypoints[i].waypoints.Count - 1; j++)
+                {
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawLine(chunkWaypoints[i].waypoints[j].waypoint.position, chunkWaypoints[i].waypoints[j + 1].waypoint.position);
+                }
             }
         }
+
     }
 }

@@ -28,6 +28,7 @@ public class GridX : MonoBehaviour
     }
     public void CreateGrid()
     {
+        //Debug.LogError("Creating grid!");
         print(5);
 
         grid = new Node[gridSizeX, gridSizeY];
@@ -85,7 +86,7 @@ public class GridX : MonoBehaviour
     public List<Node> path;
    private void OnDrawGizmos()
    {
-       //Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x,0.1f,gridWorldSize.y));
+       Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x,0.1f,gridWorldSize.y));
    
        if(grid != null)
        {
@@ -96,7 +97,7 @@ public class GridX : MonoBehaviour
                 if (!n.walkble)
                 {
                     Gizmos.color = Color.red;
-                    Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .9f));
+                    Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
                 }
 
 

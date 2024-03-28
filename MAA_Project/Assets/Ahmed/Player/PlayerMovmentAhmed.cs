@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovmentAhmed : MonoBehaviour
 {
-    [SerializeField] float playerSpeed;
+    public float playerSpeed;
     [SerializeField] float mouseVerticalSpeed;
     [SerializeField] float mouseHorizontalSpeed;
     [SerializeField] Transform lookPoint;
@@ -23,6 +23,11 @@ public class PlayerMovmentAhmed : MonoBehaviour
             cam = Camera.main;
         }
         Cursor.lockState = CursorLockMode.Locked;
+
+        if (PlayerPrefs.HasKey("PlayerSpeed"))
+        {
+            playerSpeed = PlayerPrefs.GetFloat("PlayerSpeed");
+        }
         
     }
     private void LateUpdate()

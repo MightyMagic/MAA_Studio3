@@ -23,6 +23,12 @@ public class ChunkShuffle : MonoBehaviour
 
     private int currentIndex;
 
+
+    private void Awake()
+    {
+        
+    }
+
     void Start()
     {
         for(int i = 0; i < configurations.Count; i++)
@@ -34,11 +40,15 @@ public class ChunkShuffle : MonoBehaviour
             }
         }
 
-        aStarGrid.CreateGrid();
+
+        StartCoroutine(RebuildGrid());
+        //aStarGrid.CreateGrid();
+        //monsterScript.ClearStackOfPoints();
 
         //StartCoroutine(RebuildGrid(false));
     }
 
+    
     void Update()
     {
        if(Input.GetKeyDown(KeyCode.Space))
@@ -55,10 +65,15 @@ public class ChunkShuffle : MonoBehaviour
             StartCoroutine(FullLAyoutSwapCoroutine());
        }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+       // if (Input.GetKeyDown(KeyCode.LeftShift))
+       // {
+       //     aStarGrid.CreateGrid();
+       //     monsterScript.ClearStackOfPoints();
+       // }
+
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
-            aStarGrid.CreateGrid();
-            monsterScript.ClearStackOfPoints();
+            RearrangeChunks();
         }
        
 
@@ -93,6 +108,9 @@ public class ChunkShuffle : MonoBehaviour
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
 
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
         aStarGrid.CreateGrid();
         monsterScript.player.GetComponent<CharacterController>().enabled = true;
         // enable the character controller
@@ -100,7 +118,7 @@ public class ChunkShuffle : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
-    private async void SaveRelativeObjectsPositions()
+    private void SaveRelativeObjectsPositions()
     {
         print(1);
         for (int i = 0; i < objectsInPlace.Count; i++)
