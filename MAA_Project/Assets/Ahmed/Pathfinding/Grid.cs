@@ -82,13 +82,13 @@ public class Grid : MonoBehaviour
     public List<Node> path;
    private void OnDrawGizmos()
    {
-       //Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x,0.1f,gridWorldSize.y));
+       Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x,0.1f,gridWorldSize.y));
    
        if(grid != null)
        {
            foreach (Node n in grid)
            {
-                //Gizmos.color = (n.walkble) ? Color.white : Color.red;
+                Gizmos.color = (n.walkble) ? Color.white : Color.red;
 
                 if (!n.walkble)
                 {
@@ -104,7 +104,7 @@ public class Grid : MonoBehaviour
                        Gizmos.color = Color.black;
                    }
                }
-               //Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .9f));
+               Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .9f));
            }
        }
    }

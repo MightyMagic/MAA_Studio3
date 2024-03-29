@@ -24,12 +24,12 @@ public class NpcAI : MonoBehaviour
     }
     private void Update()
     {
+        MoveAlongPath();
         Vector3 direction = player.transform.position - this.transform.position;
 
         Quaternion lookAtobject = Quaternion.LookRotation(direction);
         this.transform.rotation =  Quaternion.Slerp(this.transform.rotation, lookAtobject, 5f * Time.deltaTime);
         topNode.Evaluate();
-        //MoveAlongPath();
     }
     private void ConstructTree()
     {
