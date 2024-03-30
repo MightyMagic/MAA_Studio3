@@ -49,6 +49,7 @@ public class Interactble : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                go = null;
                 canvas.DestroyCanvasGameObject();
                 canvas.gameObject.SetActive(false);
             }
