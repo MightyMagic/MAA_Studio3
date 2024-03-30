@@ -9,6 +9,7 @@ public class PlayerMovmentAhmed : MonoBehaviour
     [SerializeField] float mouseVerticalSpeed;
     [SerializeField] float mouseHorizontalSpeed;
     [SerializeField] Transform lookPoint;
+    [SerializeField] InteractbleWindow interactbleCanvas;
     //[SerializeField] bool openPuzzleWindow;
     [SerializeField] Canvas canvas;
     [SerializeField] GameObject puzzleSpace;
@@ -49,8 +50,12 @@ public class PlayerMovmentAhmed : MonoBehaviour
             puzzleSpace.SetActive(false);
             canvas.enabled = false;
         }
-        MovePlayer();
-        LookCamera();
+        if (interactbleCanvas != null && !interactbleCanvas.gameObject.activeSelf)
+        {
+            MovePlayer();
+            LookCamera();
+
+        }
     }
     void MovePlayer()
     {

@@ -28,8 +28,8 @@ public class NpcAI : MonoBehaviour
         Vector3 direction = player.transform.position - this.transform.position;
 
         Quaternion lookAtobject = Quaternion.LookRotation(direction);
-        this.transform.rotation =  Quaternion.Slerp(this.transform.rotation, lookAtobject, 5f * Time.deltaTime);
-        topNode.Evaluate();
+       // this.transform.rotation =  Quaternion.Slerp(this.transform.rotation, lookAtobject, 5f * Time.deltaTime);
+        //topNode.Evaluate();
     }
     private void ConstructTree()
     {
@@ -38,9 +38,9 @@ public class NpcAI : MonoBehaviour
         WarnPlayer warnPlayer = new WarnPlayer();
         TeleportToPoint teleport = new TeleportToPoint(points, pointNum, this.transform, player);
 
-        BTSequence teloportToNextPhrase = new BTSequence(new List<BTNode>() { teleport } );
+        //BTSequence teloportToNextPhrase = new BTSequence(new List<BTNode>() { teleport } );
         BTSequence IntroduceSequence = new BTSequence(new List<BTNode> { range, warnPlayer });
-        topNode = new BTSelector(new List<BTNode>() { IntroduceSequence,teloportToNextPhrase });
+        topNode = new BTSelector(new List<BTNode>() { IntroduceSequence });
     }
     private void BuildPathToPointNpc(Transform point)
     {
@@ -62,7 +62,7 @@ public class NpcAI : MonoBehaviour
     {
         if (destinations.Count > 0)
         {
-            Vector3 currentTarget = (destinations[0] - transform.position).normalized * moveSpeed;
+            Vector3 currentTarget = (destinations[0] - transform.position).normalized * moveSpeed * Time.deltaTime;
             transform.Translate(currentTarget);
 
             if ((transform.position - destinations[0]).magnitude > 4f)

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Interactble : MonoBehaviour
 {
-    //public GameObject gameObj;
     [SerializeField] Transform player;
     [SerializeField] private float distThreshold;
-    [SerializeField] private Canvas canvas;
+    public GameObject go;
+    [SerializeField] private InteractbleWindow canvas;
+    [SerializeField] Canvas interactbleButton;
+    float angle;
+    float interactingAngle = 20f;
 
 
 
@@ -15,22 +18,45 @@ public class Interactble : MonoBehaviour
     {
         Interaction();
     }
-
+  
     void Interaction()
     {
+
         float dist = Vector3.Distance(player.position, transform.position);
+        
+
+
+        Vector3 playerToObject = transform.position - player.position;
+        playerToObject.Normalize();
+        angle = Vector3.Angle(player.forward,playerToObject);
+
         if (dist <= distThreshold)
         {
-            // make pointer appaer
+            
+            interactbleButton.gameObject.SetActive(true);
+            Vector3 directionOfPlayer = player.position - interactbleButton.transform.position;
+            Quaternion lookAwayRotation = Quaternion.LookRotation(-directionOfPlayer);
+            interactbleButton.transform.rotation = lookAwayRotation;
+
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // Open interactble window
-                canvas.gameObject.SetActive(true);
+                if(go == null)
+                {
+                    go = transform.gameObject;
+                    canvas.gameObject.SetActive(true);
+                    canvas.OpenObjectInCanvas(gameObject);
+                } 
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                canvas.DestroyCanvasGameObject();
                 canvas.gameObject.SetActive(false);
             }
+        }
+        else
+        {
+            interactbleButton.gameObject.SetActive(false);
+
         }
     }
 }
