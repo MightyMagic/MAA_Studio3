@@ -17,7 +17,7 @@ public class Grid : MonoBehaviour
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x/nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y/nodeDiameter);
-        //CreateGrid();
+        CreateGrid();
     }
     public int MaxSize
     {
@@ -97,14 +97,14 @@ public class Grid : MonoBehaviour
                 }
 
 
-               if(path != null)
-               {
-                   if(path.Contains(n))
-                   {
-                       Gizmos.color = Color.black;
-                   }
-               }
-               Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .9f));
+                if(path != null)
+                {
+                    if(path.Contains(n))
+                    {
+                        Gizmos.color = Color.black;
+                    }
+                }
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .9f));
            }
        }
    }

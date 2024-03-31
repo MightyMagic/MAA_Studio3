@@ -23,7 +23,7 @@ public class RangeNode : BTNode
         }
         else
         {
-            Debug.Log("not in range");
+           // Debug.Log("not in range");
             return BTNodeState.FAILURE;
         }
     }

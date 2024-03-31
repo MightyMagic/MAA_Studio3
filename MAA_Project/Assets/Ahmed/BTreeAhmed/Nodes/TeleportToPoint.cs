@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class TeleportToPoint : BTNode
 {
-    private List<Transform> Points = new List<Transform>();
+    private List<Transform> points = new List<Transform>();
     private Transform npc;
     int pointNum;
     Transform go;
 
-    public TeleportToPoint(List<Transform> Points, int pointNum, Transform npc, Transform go)
+    public TeleportToPoint(List<Transform> points, int pointNum, Transform npc, Transform go)
     {
-        this.Points = Points;
+        this.points = points;
         this.npc = npc;
         this.pointNum = pointNum;
         this.go = go;
     }
     public override BTNodeState Evaluate()
     {
-        npc.position = Points[pointNum].position + new Vector3(0, 1, 0);
-        pointNum++;
-        return BTNodeState.SUCCESS;
+       float distance = Vector3.Distance(npc.position, points[pointNum].position);
+       if (distance <= 4f)
+       {
+           Debug.Log("Got Close to position");
+           pointNum++;
+           return BTNodeState.SUCCESS;
+       } 
+       return BTNodeState.FAILURE;
     }
 }

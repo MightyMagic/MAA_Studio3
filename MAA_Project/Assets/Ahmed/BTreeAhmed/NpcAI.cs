@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using UnityEngine;
 
 public class NpcAI : MonoBehaviour
@@ -24,12 +22,9 @@ public class NpcAI : MonoBehaviour
     }
     private void Update()
     {
-        MoveAlongPath();
-        Vector3 direction = player.transform.position - this.transform.position;
+        MoveNpcAlongPath();
 
-        Quaternion lookAtobject = Quaternion.LookRotation(direction);
-       // this.transform.rotation =  Quaternion.Slerp(this.transform.rotation, lookAtobject, 5f * Time.deltaTime);
-        //topNode.Evaluate();
+        topNode.Evaluate();
     }
     private void ConstructTree()
     {
@@ -38,9 +33,9 @@ public class NpcAI : MonoBehaviour
         WarnPlayer warnPlayer = new WarnPlayer();
         TeleportToPoint teleport = new TeleportToPoint(points, pointNum, this.transform, player);
 
-        //BTSequence teloportToNextPhrase = new BTSequence(new List<BTNode>() { teleport } );
-        BTSequence IntroduceSequence = new BTSequence(new List<BTNode> { range, warnPlayer });
-        topNode = new BTSelector(new List<BTNode>() { IntroduceSequence });
+        BTSequence teloportToNextPhrase = new BTSequence(new List<BTNode>() { teleport } );
+        BTSequence introduceSequence = new BTSequence(new List<BTNode> { range, warnPlayer });
+        topNode = new BTSelector(new List<BTNode>() { introduceSequence, teloportToNextPhrase });
     }
     private void BuildPathToPointNpc(Transform point)
     {
@@ -48,7 +43,7 @@ public class NpcAI : MonoBehaviour
         {
             path.FindPath(this.gameObject.transform.position, point.position);
             destinations.Clear();
-            for (int i = 0; i < grid.path.Count; i++)
+            for(int i = 0; i < grid.path.Count; i++)
             {
                 destinations.Add(grid.path[i].worldPosition);
             }
@@ -58,36 +53,22 @@ public class NpcAI : MonoBehaviour
             Debug.LogError("PathFinding object is not assigned.");
         }
     }
-    private void MoveAlongPath()
+    // ReSharper disable Unity.PerformanceAnalysis
+    public void MoveNpcAlongPath()
     {
+        var dist = Vector3.Distance(this.transform.position, points[pointNum].position);
+        BuildPathToPointNpc(points[pointNum]);
         if (destinations.Count > 0)
         {
-            Vector3 currentTarget = (destinations[0] - transform.position).normalized * moveSpeed * Time.deltaTime;
+                
+            Vector3 currentTarget = (destinations[0] - transform.position).normalized * (moveSpeed * Time.deltaTime);
             transform.Translate(currentTarget);
+           // Quaternion lookAtDest = Quaternion.LookRotation(currentTarget);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, lookAtDest, 1f * Time.deltaTime);
+        }
 
-            if ((transform.position - destinations[0]).magnitude > 4f)
-            {
-            }
-            else
-            {
-                if (destinations.Count > 0)
-                {
-                    destinations.RemoveAt(0);
-                }
-            }
-        }
-        else if (destinations.Count == 0)
-        {
-            if (points.Count > 0)
-            {
-                BuildPathToPointNpc(points[0]);
-                points.RemoveAt(0);
-            }
-            else
-            {
-                transform.Translate(Vector3.zero);
-            }
-        }
+        
+
     }
 }
 
