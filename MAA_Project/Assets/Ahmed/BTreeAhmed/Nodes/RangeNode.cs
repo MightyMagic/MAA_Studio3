@@ -5,27 +5,27 @@ using UnityEngine;
 public class RangeNode : BTNode
 {
     private float range;
-    private Transform target;
+    private Transform npc;
     private Transform player;
+    public bool alreadyIntroduced;
 
-    public RangeNode(float range, Transform target, Transform player)
+    public RangeNode(float range, Transform npc, Transform player,bool alreadyIntroduced)
     {
         this.range = range;
-        this.target = target;
+        this.npc = npc;
         this.player = player;
+        this.alreadyIntroduced = alreadyIntroduced;
+
     }
     public override BTNodeState Evaluate()
     {
-        float distance = Vector3.Distance(target.position, player.position);
+        float distance = Vector3.Distance(npc.position, player.position);
         if(distance <= range)
         {
+            alreadyIntroduced = true;
             return BTNodeState.SUCCESS;
         }
-        else
-        {
-           // Debug.Log("not in range");
-            return BTNodeState.FAILURE;
-        }
+        return BTNodeState.FAILURE;
     }
 
 }
