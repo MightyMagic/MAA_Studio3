@@ -45,14 +45,22 @@ public class PlayerMovmentAhmed : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1)) 
         {
             openPuzzleWindow = true;
-            puzzleSpace.SetActive(true);
-            canvas.enabled = true;
+            if(canvas != null & puzzleSpace != null)
+            {
+                puzzleSpace.SetActive(true);
+                canvas.enabled = true;
+            }
         }
         else
         {
             openPuzzleWindow = false;
-            puzzleSpace.SetActive(false);
-            canvas.enabled = false;
+
+
+            if (canvas != null & puzzleSpace != null)
+            {
+                puzzleSpace.SetActive(false);
+                canvas.enabled = false;
+            }
         }
         MovePlayer();
         LookCamera();

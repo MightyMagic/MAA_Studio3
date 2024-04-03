@@ -271,7 +271,7 @@ public class MonsterDirector : MonoBehaviour
         monsterScript.pointsToVisit.AddRange(chunkList);
     }
 
-   private void OnDrawGizmos()
+   private void OnDrawGizmosSelected()
    {
         Color gColor;
 

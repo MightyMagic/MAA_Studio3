@@ -37,6 +37,11 @@ public class Eyes : MonoBehaviour
     PlayerMovmentAhmed movementScript;
     float initialMovementSpeed;
 
+    [Header("Shader objects")]
+    [SerializeField] Material targetMaterial;
+    private List<GameObject> objectsWithMaterial = new List<GameObject>();
+    [SerializeField] float distanceToSee;
+
     void Start()
     {
 
@@ -54,6 +59,12 @@ public class Eyes : MonoBehaviour
 
         movementScript = GetComponent<PlayerMovmentAhmed>();
         initialMovementSpeed = movementScript.playerSpeed;
+
+        FindObjectsWithMaterial();
+        for(int i = 0; i < objectsWithMaterial.Count; i++)
+        {
+            objectsWithMaterial[i].SetActive(false);
+        }
     }
 
     void Update()
@@ -118,6 +129,8 @@ public class Eyes : MonoBehaviour
                 StartCoroutine(shuffler.FullLAyoutSwapCoroutine());
             }
         }
+
+        EnableObjectsInProximity(distanceToSee);
     }
 
     void CloseEyes(bool state)
@@ -125,5 +138,45 @@ public class Eyes : MonoBehaviour
       
         openEyesCamera.enabled = !state;
         closedEyesCamera.enabled = state;
+    }
+
+    void FindObjectsWithMaterial()
+    {
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+ 
+            Renderer renderer = obj.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+
+                if (renderer.sharedMaterial == targetMaterial)
+                {
+
+                    objectsWithMaterial.Add(obj);
+                }
+            }
+        }
+
+
+        Debug.Log("Found " + objectsWithMaterial.Count + " objects with the material " + targetMaterial.name);
+    }
+
+    void EnableObjectsInProximity(float distance)
+    {
+        for(int i = 0; i < objectsWithMaterial.Count; i++)
+        {
+            if((transform.position - objectsWithMaterial[i].transform.position).magnitude < distance)
+            {
+                if(!objectsWithMaterial[i].activeInHierarchy)
+                    objectsWithMaterial[i].SetActive(true);
+            }
+            else
+            {
+                if (objectsWithMaterial[i].activeInHierarchy)
+                    objectsWithMaterial[i].SetActive(false);
+            }
+        }
     }
 }
