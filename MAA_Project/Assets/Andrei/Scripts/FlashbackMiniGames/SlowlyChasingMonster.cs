@@ -77,7 +77,8 @@ public class SlowlyChasingMonster : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("LoreScene1");
+            //SceneManager.LoadScene("LoreScene1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
