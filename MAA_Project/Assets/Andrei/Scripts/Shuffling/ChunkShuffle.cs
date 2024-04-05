@@ -75,7 +75,11 @@ public class ChunkShuffle : MonoBehaviour
         {
             RearrangeChunks();
         }
-       
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            RearrangeChunks();
+        }
 
     }
 
