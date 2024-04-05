@@ -9,8 +9,11 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Canvas npcCanvas;
     [SerializeField] private TextMeshProUGUI text;
-    private bool isFinishedTalking;
-    private bool isStartedTalking;
+    [SerializeField] private List<NpcDialougesSO> dialog;
+    public int dialogIndex = 0;
+    
+    public bool isFinishedTalking;
+    public bool isStartedTalking;
     public void StartTalkingCoroutine()
     {
         StartCoroutine(StartTalking());
@@ -19,21 +22,15 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
     {
         isStartedTalking = true;
         npcCanvas.gameObject.SetActive(true);
-        text.text = "hey Pretty face what ya doing here";
-        
-        yield return new WaitForSecondsRealtime(5);
-        text.text = "follow me";
-       yield return new WaitForSeconds(2);
+        text.text = dialog[dialogIndex].lineOne;
+        yield return new WaitForSecondsRealtime(dialog[dialogIndex].timeToWaiteOne);
+        text.text = dialog[dialogIndex].lineTwo;
+        yield return new WaitForSecondsRealtime(dialog[dialogIndex].timeToWaiteTwo);
+        text.text = dialog[dialogIndex].lineThree;
+       yield return new WaitForSeconds(dialog[dialogIndex].timeToWaiteThree);
+       
        npcCanvas.gameObject.SetActive(false);
+       dialogIndex++;
        isFinishedTalking = true;
-    }
-    public bool IsFinishedTalking()
-    {
-        return isFinishedTalking;
-    }
-
-    public bool IsStartedTalking()
-    {
-        return isStartedTalking;
     }
 }

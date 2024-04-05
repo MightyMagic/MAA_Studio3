@@ -1,26 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CheckIfDone : BTNode
+namespace Ahmed.BTreeAhmed.Nodes
 {
-    private bool _done;
-
-   // public CheckIfDone(bool done)
-   // {
-   //     this._done = _done;
-   // }
-    public override BTNodeState Evaluate() // maybe I need an idle node
-    
+    public class CheckIfDone : BTNode
     {
-        if (_done)
+        private bool _done;
+
+        // public CheckIfDone(bool done)
+        // {
+        //     this._done = _done;
+        // }
+        public override BTNodeState Evaluate() // maybe I need an idle node
+    
         {
-            return BTNodeState.FAILURE;
-        }
-        else
-        {
-            _done = true;
-            return BTNodeState.SUCCESS;
+            if (_done)
+            {
+                return BTNodeState.FAILURE;
+            }
+            else
+            {
+                _done = true;
+                return BTNodeState.SUCCESS;
+            }
         }
     }
 }

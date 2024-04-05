@@ -39,5 +39,4 @@ public class BTSequence : BTNode
         }
         return _nodestate;
     }
-
 }

@@ -10,7 +10,7 @@ public class Interactble : MonoBehaviour
     [SerializeField] private InteractbleWindow canvas;
     [SerializeField] Canvas interactbleButton;
     float angle;
-    float interactingAngle = 20f;
+    //float interactingAngle = 20f;
 
 
 

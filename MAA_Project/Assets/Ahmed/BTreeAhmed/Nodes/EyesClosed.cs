@@ -1,27 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class EyesClosed : BTNode
+namespace Ahmed.BTreeAhmed.Nodes
 {
-    // private Eyes eyes;
-    private Eyes eyes;
-
-    public EyesClosed(Eyes eyes)
+    public class EyesClosed : BTNode
     {
-        this.eyes = eyes;
-    }
+        // private Eyes eyes;
+        private Eyes eyes;
 
-    public override BTNodeState Evaluate()
-    {
-       if (eyes.eyesClosed)
-       {
-           return BTNodeState.SUCCESS;
-       }
-       else
-       {
-           return BTNodeState.FAILURE;
+        public EyesClosed(Eyes eyes)
+        {
+            this.eyes = eyes;
+        }
+
+        public override BTNodeState Evaluate()
+        {
+            if (eyes.eyesClosed)
+            {
+                return BTNodeState.SUCCESS;
+            }
+            else
+            {
+                return BTNodeState.FAILURE;
        
-       }
+            }
+        }
     }
 }

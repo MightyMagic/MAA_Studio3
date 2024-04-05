@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ahmed.BTreeAhmed.Nodes;
 using UnityEngine;
 
 public class NpcAI : MonoBehaviour
@@ -12,7 +13,7 @@ public class NpcAI : MonoBehaviour
     [SerializeField] List<Transform> points = new List<Transform>();
     [SerializeField] List<Vector3> destinations = new List<Vector3>();
     [SerializeField] float moveSpeed;
-    private int pointNum = 0;
+    public int pointNum = 0;
     private BTNode topNode;
     public bool alreadyIntroduced;
 
@@ -35,15 +36,31 @@ public class NpcAI : MonoBehaviour
         RangeNode range = new RangeNode(detectRange,transform,player.transform,alreadyIntroduced);
         TalkToPlayer talk = new TalkToPlayer(_manager, this,player);
         MoveNpcToPoint moveNpc = new MoveNpcToPoint(points,destinations, pointNum, this.transform, player ,this);
-        AlreadyIntroduced checkInroduce = new AlreadyIntroduced(range);
+        AlreadyIntroduced checkIntroduced = new AlreadyIntroduced(range);
+        CheckFirstDialog checkFirstDialog = new CheckFirstDialog(_manager);
+        CheckSecondDialog checkSecondDialog = new CheckSecondDialog(_manager);
+        CheckThirdDialog checkThirdDialog = new CheckThirdDialog(_manager, this);
+        CheckFourthDialog checkFourthDialog = new CheckFourthDialog(_manager,this);
+        CheckFirstPhrase checkFirstPhrase = new CheckFirstPhrase();
+        CheckSecondPhrase checkSecondPhrase = new CheckSecondPhrase();
+        CheckFirstDestinationPoint checkFirstPoint = new CheckFirstDestinationPoint(this);
+        CheckSecondDestinationPoint checkSecondPoint = new CheckSecondDestinationPoint(this);
         
         // Assemble tree
-        BTSequence moveNpcToPoint = new BTSequence(new List<BTNode> { moveNpc });
+        
         BTInvertor notInRange = new BTInvertor(range);
-        BTSelector talkAndMove = new BTSelector(new List<BTNode>{talk,moveNpcToPoint});
-        BTSequence introduce = new BTSequence(new List<BTNode> { checkInroduce, notInRange });
-        //BTSequence introduceSequence = new BTSequence(new List<BTNode> {talkToPlayer, moveNpcToPoint });
-        topNode = new BTSelector(new List<BTNode> {introduce, talkAndMove});
+        BTSequence secondMove = new BTSequence(new List<BTNode>() { checkSecondPoint, moveNpc });
+        BTSequence waiteForPlayerToCatchSecondPhrase =
+            new BTSequence(new List<BTNode>{checkSecondPhrase, checkFourthDialog, talk});
+        BTSequence waiteForPlyarToCatchFirstPhrase =
+            new BTSequence(new List<BTNode>() {notInRange, checkFirstPhrase, checkThirdDialog, talk}); //remove not in Range later
+        BTSequence secondDialog = new BTSequence(new List<BTNode> { range,checkSecondDialog, talk });
+        BTSelector makePlayerCapturePhrase = new BTSelector(new List<BTNode>() {secondDialog,waiteForPlyarToCatchFirstPhrase });
+        BTSequence moveToFirstPoint = new BTSequence(new List<BTNode>() { checkFirstPoint, moveNpc });
+        BTSequence firstDialog = new BTSequence(new List<BTNode> { checkFirstDialog, talk });
+        BTSelector firstMove = new BTSelector(new List<BTNode>{firstDialog,moveToFirstPoint});
+        BTSequence firstEncounter = new BTSequence(new List<BTNode> { checkIntroduced, notInRange });
+        topNode = new BTSelector(new List<BTNode> {firstEncounter, firstMove ,makePlayerCapturePhrase,secondMove,waiteForPlayerToCatchSecondPhrase});
     }
     private void BuildPathToPointNpc(Transform point)
     {

@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 83254438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.55, y: 1, z: -7.19}
+  m_LocalPosition: {x: 12.15, y: 1, z: -10.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1738,6 +1738,14 @@ MonoBehaviour:
   player: {fileID: 83254442}
   npcCanvas: {fileID: 1521190833}
   text: {fileID: 555434624}
+  dialog:
+  - {fileID: 11400000, guid: c085d3c1382b15940af50bd89d6bb7c5, type: 2}
+  - {fileID: 11400000, guid: cc03d86fc8fac7f40a853e12b3c9e6f9, type: 2}
+  - {fileID: 11400000, guid: 5c49f4a89e8151147a4fa4ab6ca4706b, type: 2}
+  - {fileID: 11400000, guid: 6ca7183ff4b4d0d44b716f749582baa2, type: 2}
+  dialogIndex: 0
+  isFinishedTalking: 0
+  isStartedTalking: 0
 --- !u!4 &1281004299
 Transform:
   m_ObjectHideFlags: 0

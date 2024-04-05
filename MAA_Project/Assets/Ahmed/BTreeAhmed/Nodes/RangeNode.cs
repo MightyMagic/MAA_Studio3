@@ -1,31 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeNode : BTNode
+namespace Ahmed.BTreeAhmed.Nodes
 {
-    private float range;
-    private Transform npc;
-    private Transform player;
-    public bool alreadyIntroduced;
-
-    public RangeNode(float range, Transform npc, Transform player,bool alreadyIntroduced)
+    public class RangeNode : BTNode
     {
-        this.range = range;
-        this.npc = npc;
-        this.player = player;
-        this.alreadyIntroduced = alreadyIntroduced;
+        private float range;
+        private Transform npc;
+        private Transform player;
+        public bool alreadyIntroduced;
 
-    }
-    public override BTNodeState Evaluate()
-    {
-        float distance = Vector3.Distance(npc.position, player.position);
-        if(distance <= range)
+        public RangeNode(float range, Transform npc, Transform player,bool alreadyIntroduced)
         {
-            alreadyIntroduced = true;
-            return BTNodeState.SUCCESS;
-        }
-        return BTNodeState.FAILURE;
-    }
+            this.range = range;
+            this.npc = npc;
+            this.player = player;
+            this.alreadyIntroduced = alreadyIntroduced;
 
+        }
+        public override BTNodeState Evaluate()
+        {
+            float distance = Vector3.Distance(npc.position, player.position);
+            if(distance <= range)
+            {
+                Debug.Log("in range");
+                alreadyIntroduced = true;
+                return BTNodeState.SUCCESS;
+            }
+            return BTNodeState.FAILURE;
+        }
+
+    }
 }

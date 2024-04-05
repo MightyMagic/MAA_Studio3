@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Idle : BTNode
+namespace Ahmed.BTreeAhmed.Nodes
 {
-    public bool idleing;
-    public override BTNodeState Evaluate()
+    public class Idle : BTNode
     {
-        if (!idleing)
+        public bool idleing;
+        public override BTNodeState Evaluate()
         {
-            return BTNodeState.SUCCESS;
+            if (!idleing)
+            {
+                return BTNodeState.SUCCESS;
+            }
+            return BTNodeState.FAILURE;
         }
-        return BTNodeState.FAILURE;
     }
 }
