@@ -5,10 +5,17 @@ using UnityEngine;
 public class GameEvents : MonoBehaviour
 {
 
-    public static GameEvents instance;
+    public static GameEvents gameEvents;
 
     private void Awake()
     {
-        instance = this; 
+        if (gameEvents != null && gameEvents != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            gameEvents = this;
+        }
     }
 }

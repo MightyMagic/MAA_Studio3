@@ -51,9 +51,10 @@ public class MonsterDirector : MonoBehaviour
     {
         patrolling = true;
         chasing = false;
+
         //InvestigateChunk(1);
         FetchAllPatrolWaypoints();  
-        PatrolAround(FindClosestWaypointToTarget(transform));
+        //PatrolAround(FindClosestWaypointToTarget(transform));
 
         initialMonsterVelocity = monsterScript.moveSpeed;
         if (PlayerPrefs.HasKey("MonsterSpeed"))

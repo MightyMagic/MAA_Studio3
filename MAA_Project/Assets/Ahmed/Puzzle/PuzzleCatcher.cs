@@ -8,7 +8,7 @@ public class PuzzleCatcher : MonoBehaviour
     //[SerializeField] EyesControls eyes;
     [SerializeField] Transform playerCamera;
     float lookThreshold = 0.0f;
-    [SerializeField] List<PuzzleWord> puzzleWords = new List<PuzzleWord>();
+    public List<PuzzleWord> puzzleWords = new List<PuzzleWord>();
     public List<PuzzleWord> CapturedWords = new List<PuzzleWord>();
     public GameObject puzzleWindow;
     public float activationAngle = 30f;
@@ -19,6 +19,7 @@ public class PuzzleCatcher : MonoBehaviour
 
     [Header("Lore room")]
     [SerializeField] LoreRoomManager loreManager;
+    // This is buffer counter of this level
     private int phraseCount = 0;
 
     [Header("Monster")]

@@ -12,6 +12,9 @@ public class ChunkShuffle : MonoBehaviour
     [Header("Monster")]
     [SerializeField] SimpleMonster monsterScript;
 
+    [Header("Respawner")]
+    [SerializeField] WakeUpInBed wakeUpScript;
+
     [Header("List of objects that stay within the room")]
     [SerializeField] List<KeepInPlace> objectsInPlace;
 
@@ -31,17 +34,7 @@ public class ChunkShuffle : MonoBehaviour
 
     void Start()
     {
-        for(int i = 0; i < configurations.Count; i++)
-        {
-            if (configurations[i].isDefault)
-            {
-                PlaceChunks(configurations[i]);
-                currentIndex = i;
-            }
-        }
-
-
-        StartCoroutine(RebuildGrid());
+        
         //aStarGrid.CreateGrid();
         //monsterScript.ClearStackOfPoints();
 
@@ -81,6 +74,22 @@ public class ChunkShuffle : MonoBehaviour
             RearrangeChunks();
         }
 
+    }
+
+    public void SpawnFirstLayout()
+    {
+        monsterScript.player.gameObject.SetActive(false);
+
+        for (int i = 0; i < configurations.Count; i++)
+        {
+            if (configurations[i].isDefault)
+            {
+                PlaceChunks(configurations[i]);
+                currentIndex = i;
+            }
+        }
+
+        StartCoroutine(RebuildGrid());
     }
 
     public void FullLayoutSwap()
@@ -149,9 +158,6 @@ public class ChunkShuffle : MonoBehaviour
         PlaceChunks(FetchNextChunk(currentIndex));
         currentIndex = (currentIndex + 1) % configurations.Count;
         print(4);
-
-       
-
     }
     private ChunkConfiguration FetchNextChunk(int index)
     {

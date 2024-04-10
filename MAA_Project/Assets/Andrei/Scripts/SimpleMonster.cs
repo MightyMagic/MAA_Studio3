@@ -144,7 +144,8 @@ public class SimpleMonster : MonoBehaviour
         {
             print("Skill issue");
             Debug.LogError("Eaten by monster");
-            SceneManager.LoadScene("SimpleGameOver");
+            PlayerPrefs.SetInt("PlayerSpawn", 1);
+            SceneManager.LoadScene("LevelOneArea");
         }
     }
 
