@@ -36,19 +36,18 @@ public class SaveLoadManager : MonoBehaviour
             saveLoad = this;
         }
 
-        PlayerPrefs.SetInt("PhraseIndex", roomManager.phraseIndex);
         //RestartMainLevel();
         StartCoroutine(StartLevel());
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            PlayerPrefs.SetInt("PhraseIndex", roomManager.phraseIndex);
-            StartCoroutine(StartLevel());
-            //RestartMainLevel();
-        }
+       //if (Input.GetKeyDown(KeyCode.Q))
+       //{
+       //    PlayerPrefs.SetInt("PhraseIndex", roomManager.phraseIndex);
+       //    StartCoroutine(StartLevel());
+       //    //RestartMainLevel();
+       //}
     }
 
     public void RestartMainLevel()
@@ -98,14 +97,14 @@ public class SaveLoadManager : MonoBehaviour
             switch (PlayerPrefs.GetInt("PlayerSpawn"))
             {
                 case 0:
-                    playerObject.transform.position = loreRoomSpawn.position; yield return new WaitForSeconds(0.5f); playerObject.SetActive(true); break;
+                    playerObject.transform.position = loreRoomSpawn.position; playerObject.SetActive(true); break; //yield return new WaitForSeconds(0.5f); 
                 case 1:
                     StartCoroutine(wakeUpScript.WakeUp()); break;
             }        
         }
         else
         {
-            yield return new WaitForSeconds(0.5f);
+            //yield return new WaitForSeconds(0.5f);
             PlayerPrefs.SetInt("PlayerSpawn", 1);
             playerObject.transform.position = loreRoomSpawn.position;
         }

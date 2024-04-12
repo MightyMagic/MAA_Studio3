@@ -26,7 +26,12 @@ public class ShuffleEditor : Editor
         {
             shuffler.AppendNewConfiguration();
         }
-        
+
+        if (GUILayout.Button("Switch to next configuration"))
+        {
+            shuffler.RearrangeChunks();
+        }
+
     }
         
 }

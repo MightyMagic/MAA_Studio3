@@ -36,7 +36,7 @@ public class LoreRoomManager : MonoBehaviour
         monsterSpeed = monsterScript.moveSpeed;
         roomObject.SetActive(false);
 
-        wallBehindDoor.SetActive(false);
+        wallBehindDoor.SetActive(true);
 
         //DisableAllPhrases();
         //ActivatePhrasesByIndex(phrasesIndex);
