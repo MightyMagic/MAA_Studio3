@@ -71,13 +71,13 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NoiseIntensity: 1.06
+    - _NoiseIntensity: 5.41
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Sharpness: 3.8
+    - _Sharpness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.1
+    - _Speed: 0.0285
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
