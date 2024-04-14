@@ -10,6 +10,8 @@ public class SlowlyChasingMonster : MonoBehaviour
     [SerializeField] float distanceToStop;
     [SerializeField] float distanceToAwake;
 
+   
+
     Rigidbody rb;
     GameObject player;
 
@@ -17,12 +19,18 @@ public class SlowlyChasingMonster : MonoBehaviour
 
     bool isAsleep = true;
 
+    [Header("Disappear")]
+    [SerializeField] float distanceToAppear;
+    bool appeared = false;
+
     void Start()
     {
         player = GameObject.Find("PlayerAhmed");
         rb = GetComponent<Rigidbody>();
 
         initialPosition = new Vector3(transform.position.x, 0f, transform.position.z);
+
+        //gameObject.SetActive(false);
     }
 
     void Update()
@@ -41,6 +49,8 @@ public class SlowlyChasingMonster : MonoBehaviour
             initialPosition = new Vector3(transform.position.x, 0f, transform.position.z);
             isAsleep = false;
         }
+
+        //Appear(playerVector.magnitude);
                  
     }
 
@@ -70,6 +80,20 @@ public class SlowlyChasingMonster : MonoBehaviour
             rb.velocity = Vector3.zero;
             isAsleep = true;
             //this.enabled = false;
+        }
+    }
+
+    void Appear(float distanceFromPlayer)
+    {
+        if(distanceFromPlayer < distanceToAppear & !appeared)
+        {
+            appeared = true;
+            gameObject.SetActive(true);
+        }
+
+        if(appeared & distanceToAppear > (distanceToAppear * 2f))
+        {
+            appeared = false; gameObject.SetActive(false);
         }
     }
 

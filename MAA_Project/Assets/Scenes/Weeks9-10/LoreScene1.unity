@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (43)
@@ -256,6 +260,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -331,6 +339,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (2)
@@ -405,6 +417,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (51)
@@ -478,6 +494,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -667,6 +687,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (36)
@@ -740,6 +764,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -815,6 +843,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (46)
@@ -889,6 +921,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (34)
@@ -962,6 +998,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -1140,6 +1180,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (5)
@@ -1289,6 +1333,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (50)
@@ -1368,6 +1416,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (17)
@@ -1442,6 +1494,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (20)
@@ -1515,6 +1571,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -1682,6 +1742,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (19)
@@ -1756,6 +1820,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (4)
@@ -1829,6 +1897,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -2038,6 +2110,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (54)
@@ -2112,6 +2188,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (13)
@@ -2161,8 +2241,8 @@ Camera:
   m_GameObject: {fileID: 805515972}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2244,7 +2324,7 @@ Transform:
   m_GameObject: {fileID: 811292349}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.16, z: 0}
+  m_LocalPosition: {x: 0, y: 11.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2263,7 +2343,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 3
-  m_Range: 10.327978
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2371,6 +2451,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -2699,6 +2783,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (56)
@@ -2772,6 +2860,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -2949,6 +3041,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (37)
@@ -3023,6 +3119,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (6)
@@ -3096,6 +3196,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -3305,6 +3409,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (47)
@@ -3379,6 +3487,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (15)
@@ -3452,6 +3564,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -3697,6 +3813,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (55)
@@ -3770,6 +3890,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -3845,6 +3969,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (10)
@@ -3918,6 +4046,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -3993,6 +4125,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (14)
@@ -4066,6 +4202,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -4235,6 +4375,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (31)
@@ -4308,6 +4452,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -4383,6 +4531,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (49)
@@ -4456,6 +4608,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -4619,6 +4775,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (27)
@@ -4692,6 +4852,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -4841,6 +5005,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -5157,6 +5325,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (3)
@@ -5306,6 +5478,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (9)
@@ -5380,6 +5556,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (22)
@@ -5453,6 +5633,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -5782,6 +5966,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (23)
@@ -6051,6 +6239,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (11)
@@ -6200,6 +6392,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (40)
@@ -6348,6 +6544,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -6633,6 +6833,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (21)
@@ -6706,6 +6910,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -6848,6 +7056,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -7055,6 +7267,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
@@ -7358,6 +7574,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (39)
@@ -7606,6 +7826,10 @@ PrefabInstance:
       propertyPath: distanceToAwake
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
       value: SlowMonster (25)
@@ -7782,6 +8006,10 @@ PrefabInstance:
     - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: distanceToAwake
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251132473381987625, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
+      propertyPath: distanceToAppear
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8808592778924568999, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
       propertyPath: m_Name
