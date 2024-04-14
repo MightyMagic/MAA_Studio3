@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ahmed.BTreeAhmed.Nodes;
 using UnityEngine;
 
 public class PuzzleCatcher : MonoBehaviour
@@ -8,7 +9,7 @@ public class PuzzleCatcher : MonoBehaviour
     //[SerializeField] EyesControls eyes;
     [SerializeField] Transform playerCamera;
     float lookThreshold = 0.0f;
-    [SerializeField] List<PuzzleWord> puzzleWords = new List<PuzzleWord>();
+    public List<PuzzleWord> puzzleWords = new List<PuzzleWord>();
     public List<PuzzleWord> CapturedWords = new List<PuzzleWord>();
     public GameObject puzzleWindow;
     public float activationAngle = 30f;
@@ -51,11 +52,14 @@ public class PuzzleCatcher : MonoBehaviour
                         puzzleMeter.PuzzleCatcherMeterUpdater(puzzleWords[i]);
                         if (puzzleWords[i].currentMeter >= puzzleMeter.meterThreshold && !puzzleWords[i].captured)
                         {
-                            Debug.Log("you captured the text");
+                            Debug.Log(puzzleWords[i]);
 
                             // tell the monster to investigate
-                            monsterDirector.Investigate();
-                            //
+                            if (monsterDirector != null)
+                            {
+                                monsterDirector.Investigate();
+                            }
+                            
 
                             CapturedWords.Add(puzzleWords[i]);
                             puzzleWords[i].captured = true;

@@ -25,10 +25,9 @@ namespace Ahmed.BTreeAhmed.Nodes
         public override BTNodeState Evaluate()
         { 
             npcAI.MoveNpcAlongPath();
-            float distance = Vector3.Distance(npc.position, points[pointNum].position);
+            float distance = Vector3.Distance(npc.position, points[npcAI.pointNum].position);
             if (distance <= 4f)
             {
-           
                 return BTNodeState.FAILURE;
             }
             return BTNodeState.SUCCESS;

@@ -19,11 +19,11 @@ namespace Ahmed.BTreeAhmed.Nodes
                 dialogIndex.isStartedTalking = false;
                 dialogIndex.isFinishedTalking = false;
                 startedThirdEncounter = true;
-                moveNpc.pointNum++;
+                //moveNpc.pointNum++;
             }
             if (dialogIndex.dialogIndex == 2)
             {
-                Debug.Log("third should start");
+                
                 return BTNodeState.SUCCESS;
             }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NpcAI : MonoBehaviour
 {
+    
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TalkToPlayerCoroutineManager _manager;
     [SerializeField] PathFinding path;
@@ -12,8 +13,9 @@ public class NpcAI : MonoBehaviour
     [SerializeField] float detectRange;
     [SerializeField] List<Transform> points = new List<Transform>();
     [SerializeField] List<Vector3> destinations = new List<Vector3>();
+    [SerializeField] public PuzzleCatcher _puzzleCatcher;
     [SerializeField] float moveSpeed;
-    public int pointNum = 0;
+    public int pointNum;
     private BTNode topNode;
     public bool alreadyIntroduced;
 
@@ -41,8 +43,8 @@ public class NpcAI : MonoBehaviour
         CheckSecondDialog checkSecondDialog = new CheckSecondDialog(_manager);
         CheckThirdDialog checkThirdDialog = new CheckThirdDialog(_manager, this);
         CheckFourthDialog checkFourthDialog = new CheckFourthDialog(_manager,this);
-        CheckFirstPhrase checkFirstPhrase = new CheckFirstPhrase();
-        CheckSecondPhrase checkSecondPhrase = new CheckSecondPhrase();
+        CheckFirstPhrase checkFirstPhrase = new CheckFirstPhrase(this);
+        CheckSecondPhrase checkSecondPhrase = new CheckSecondPhrase(this);
         CheckFirstDestinationPoint checkFirstPoint = new CheckFirstDestinationPoint(this);
         CheckSecondDestinationPoint checkSecondPoint = new CheckSecondDestinationPoint(this);
         
@@ -52,15 +54,15 @@ public class NpcAI : MonoBehaviour
         BTSequence secondMove = new BTSequence(new List<BTNode>() { checkSecondPoint, moveNpc });
         BTSequence waiteForPlayerToCatchSecondPhrase =
             new BTSequence(new List<BTNode>{checkSecondPhrase, checkFourthDialog, talk});
-        BTSequence waiteForPlyarToCatchFirstPhrase =
-            new BTSequence(new List<BTNode>() {notInRange, checkFirstPhrase, checkThirdDialog, talk}); //remove not in Range later
-        BTSequence secondDialog = new BTSequence(new List<BTNode> { range,checkSecondDialog, talk });
-        BTSelector makePlayerCapturePhrase = new BTSelector(new List<BTNode>() {secondDialog,waiteForPlyarToCatchFirstPhrase });
+        BTSequence waiteForPlayerToCatchFirstPhrase =
+            new BTSequence(new List<BTNode>() {checkFirstPhrase, checkThirdDialog, talk });
+        BTSequence secondDialog = new BTSequence(new List<BTNode> {range,checkSecondDialog, talk });
+        BTSelector makePlayerCapturePhrase = new BTSelector(new List<BTNode>() {secondDialog,waiteForPlayerToCatchFirstPhrase,secondMove, waiteForPlayerToCatchSecondPhrase });
         BTSequence moveToFirstPoint = new BTSequence(new List<BTNode>() { checkFirstPoint, moveNpc });
         BTSequence firstDialog = new BTSequence(new List<BTNode> { checkFirstDialog, talk });
         BTSelector firstMove = new BTSelector(new List<BTNode>{firstDialog,moveToFirstPoint});
         BTSequence firstEncounter = new BTSequence(new List<BTNode> { checkIntroduced, notInRange });
-        topNode = new BTSelector(new List<BTNode> {firstEncounter, firstMove ,makePlayerCapturePhrase,secondMove,waiteForPlayerToCatchSecondPhrase});
+        topNode = new BTSelector(new List<BTNode> {firstEncounter, firstMove ,makePlayerCapturePhrase});
     }
     private void BuildPathToPointNpc(Transform point)
     {
@@ -81,7 +83,7 @@ public class NpcAI : MonoBehaviour
     }
     public void MoveNpcAlongPath()
     {
-        var dist = Vector3.Distance(this.transform.position, points[pointNum].position);
+        //Vector3.Distance(this.transform.position, points[pointNum].position);
         BuildPathToPointNpc(points[pointNum]);
         if (destinations.Count > 0)
         {

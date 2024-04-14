@@ -5,7 +5,7 @@ using TMPro;
 
 public class TalkToPlayerCoroutineManager : MonoBehaviour
 {
-    [SerializeField] private Transform npc;
+    [SerializeField] private NpcAI npc;
     [SerializeField] private Transform player;
     [SerializeField] private Canvas npcCanvas;
     [SerializeField] private TextMeshProUGUI text;
@@ -32,5 +32,13 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
        npcCanvas.gameObject.SetActive(false);
        dialogIndex++;
        isFinishedTalking = true;
+       if (dialogIndex == 3)
+       {
+           npc.pointNum = 1;
+       }
+       if (dialogIndex == 4)
+       {
+          npc.pointNum = 2;
+       }
     }
 }

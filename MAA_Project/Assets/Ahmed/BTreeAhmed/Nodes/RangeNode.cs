@@ -22,7 +22,6 @@ namespace Ahmed.BTreeAhmed.Nodes
             float distance = Vector3.Distance(npc.position, player.position);
             if(distance <= range)
             {
-                Debug.Log("in range");
                 alreadyIntroduced = true;
                 return BTNodeState.SUCCESS;
             }
