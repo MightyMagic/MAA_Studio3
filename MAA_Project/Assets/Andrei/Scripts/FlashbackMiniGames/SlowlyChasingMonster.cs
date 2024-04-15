@@ -21,7 +21,7 @@ public class SlowlyChasingMonster : MonoBehaviour
 
     [Header("Disappear")]
     [SerializeField] float distanceToAppear;
-    bool appeared = false;
+    bool appeared = true;
 
     void Start()
     {
@@ -50,7 +50,7 @@ public class SlowlyChasingMonster : MonoBehaviour
             isAsleep = false;
         }
 
-        //Appear(playerVector.magnitude);
+        Appear(playerVector.magnitude);
                  
     }
 
@@ -88,12 +88,12 @@ public class SlowlyChasingMonster : MonoBehaviour
         if(distanceFromPlayer < distanceToAppear & !appeared)
         {
             appeared = true;
-            gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(true);
         }
 
-        if(appeared & distanceToAppear > (distanceToAppear * 2f))
+        if(appeared & distanceFromPlayer > (distanceToAppear * 2f))
         {
-            appeared = false; gameObject.SetActive(false);
+            appeared = false; transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 

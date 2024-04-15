@@ -16,6 +16,10 @@ public class PlayerMovmentAhmed : MonoBehaviour
     Vector3 moveInput;
     Camera cam;
     [SerializeField] Camera eyesCamera;
+
+    [Header("Camera restrictions")]
+    [SerializeField] float bottomXCamera;
+    [SerializeField] float topXCamera;
     private void Start()
     {
         if (cam == null)
@@ -87,7 +91,7 @@ public class PlayerMovmentAhmed : MonoBehaviour
             transform.rotation.eulerAngles.z);
 
         verticalRotStore -= mouseY * mouseVerticalSpeed;
-        verticalRotStore = Mathf.Clamp(verticalRotStore, -80, 80);
+        verticalRotStore = Mathf.Clamp(verticalRotStore, -bottomXCamera, topXCamera);
 
         lookPoint.rotation = Quaternion.Euler(verticalRotStore,
             lookPoint.rotation.eulerAngles.y,
