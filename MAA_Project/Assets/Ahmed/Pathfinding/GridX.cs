@@ -17,7 +17,7 @@ public class GridX : MonoBehaviour
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x/nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y/nodeDiameter);
-        //CreateGrid();
+        CreateGrid();
     }
     public int MaxSize
     {
@@ -92,7 +92,7 @@ public class GridX : MonoBehaviour
        {
            foreach (Node n in grid)
            {
-                //Gizmos.color = (n.walkble) ? Color.white : Color.red;
+                Gizmos.color = (n.walkble) ? Color.white : Color.red;
 
                 if (!n.walkble)
                 {
@@ -101,14 +101,14 @@ public class GridX : MonoBehaviour
                 }
 
 
-               if(path != null)
-               {
-                   if(path.Contains(n))
-                   {
-                       Gizmos.color = Color.black;
-                   }
-               }
-               //Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .9f));
+                if(path != null)
+                {
+                    if(path.Contains(n))
+                    {
+                        Gizmos.color = Color.black;
+                    }
+                }
+               // Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .9f));
            }
        }
    }
