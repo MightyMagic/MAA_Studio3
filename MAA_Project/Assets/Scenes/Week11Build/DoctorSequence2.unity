@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 273dff6b7e6831c4aa9e5a8884e509c7, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: f39b9de233ee2f445beb3b0dee1d2a7a, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: eeed58c5941843a45914a2f0070d84f1, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -4795,9 +4795,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
-  m_Range: 13
-  m_SpotAngle: 52.095383
+  m_Intensity: 0.5
+  m_Range: 13.594331
+  m_SpotAngle: 32.675846
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -4834,7 +4834,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -9832,7 +9832,7 @@ Transform:
   m_GameObject: {fileID: 525706327}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20280443, y: 0.6773997, z: -0.20280443, w: 0.6773997}
-  m_LocalPosition: {x: -0.995, y: 0.543, z: -3.007}
+  m_LocalPosition: {x: -0.995, y: 0.801, z: -3.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9850,10 +9850,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.5
   m_Range: 20
-  m_SpotAngle: 40.10096
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 22.18072
+  m_InnerSpotAngle: 19.313349
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -9889,7 +9889,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -33783,7 +33783,7 @@ Transform:
   m_GameObject: {fileID: 1989423365}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20280443, y: 0.6773997, z: -0.20280443, w: 0.6773997}
-  m_LocalPosition: {x: -0.918, y: 0.66, z: 1.657}
+  m_LocalPosition: {x: -0.918, y: 0.974, z: 1.657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33801,10 +33801,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.5
   m_Range: 20
-  m_SpotAngle: 37.9
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 24.85885
+  m_InnerSpotAngle: 17.188503
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -33840,7 +33840,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

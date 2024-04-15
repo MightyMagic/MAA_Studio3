@@ -9,7 +9,7 @@ public class NpcAI : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TalkToPlayerCoroutineManager _manager;
     [SerializeField] PathFinding path;
-    [SerializeField] Grid grid;
+    [SerializeField] GridX grid;
     [SerializeField] float detectRange;
     [SerializeField] List<Transform> points = new List<Transform>();
     [SerializeField] List<Vector3> destinations = new List<Vector3>();
@@ -97,5 +97,6 @@ public class NpcAI : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
     }
+    
 }
 
