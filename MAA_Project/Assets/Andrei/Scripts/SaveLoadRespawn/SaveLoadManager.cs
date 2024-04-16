@@ -105,7 +105,7 @@ public class SaveLoadManager : MonoBehaviour
         else
         {
             //yield return new WaitForSeconds(0.5f);
-            PlayerPrefs.SetInt("PlayerSpawn", 1);
+            PlayerPrefs.SetInt("PlayerSpawn", 0);
             playerObject.transform.position = loreRoomSpawn.position;
         }
         // either near lore room door or in bed

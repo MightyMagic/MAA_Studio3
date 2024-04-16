@@ -31,7 +31,7 @@ public class LoreRoomManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.SetInt("PhraseIndex", phraseIndex);
+        //PlayerPrefs.SetInt("PhraseIndex", phraseIndex);
 
         monsterSpeed = monsterScript.moveSpeed;
         roomObject.SetActive(false);
