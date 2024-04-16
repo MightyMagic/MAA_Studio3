@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoreRoomManager : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class LoreRoomManager : MonoBehaviour
     float monsterSpeed;
     [SerializeField] SimpleMonster monsterScript;
     [SerializeField] Eyes eyeScript;
+
+    [Header("End of segment")]
+    [SerializeField] string sceneToLoad;
 
 
    
@@ -159,6 +163,8 @@ public class LoreRoomManager : MonoBehaviour
 
     public void LoreRoomComplete()
     {
+        SceneManager.LoadScene(sceneToLoad);
+
         wallBehindDoor.SetActive(false);
         eyeScript.enabled = true;
         OutsideRoomTrigger.SetActive(true);
