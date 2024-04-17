@@ -24,6 +24,9 @@ public class SaveLoadManager : MonoBehaviour
     [Header("Monster spawn")]
     [SerializeField] List<Transform> monsterSpawnPoints;
 
+    [Header("Environment")]
+    [SerializeField] EyesClosedEnvironment eyesClosedEnvironment;
+
     private void Awake()
     {
 
@@ -52,7 +55,7 @@ public class SaveLoadManager : MonoBehaviour
 
     public void RestartMainLevel()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
 
         // Disable player and monster
         DisablePlayerAndMonster(true);
@@ -118,12 +121,18 @@ public class SaveLoadManager : MonoBehaviour
         roomManager.FecthPreviousPhrases(roomManager.LatestPhraseIndex());
         roomManager.SpawnCurrentPhrases(roomManager.LatestPhraseIndex());
 
+       // // Generate Eyes Close
+       // yield return new WaitForSeconds(1f);
+       //
+       // eyesClosedEnvironment.GenerateEyesClosed();
+
         // Spawn monster
         monsterObject.transform.position = monsterSpawnPoints[Random.Range(0, monsterSpawnPoints.Count)].position;
         monsterObject.SetActive(true);
 
         // Enable them
         //DisablePlayerAndMonster(false);
+       
         yield return null;
     }
 

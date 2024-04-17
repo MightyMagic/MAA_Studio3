@@ -27,7 +27,7 @@ public class SimpleMenu : MonoBehaviour
 
     public void StartLevelOne()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     public void GoBackToMainMenu()

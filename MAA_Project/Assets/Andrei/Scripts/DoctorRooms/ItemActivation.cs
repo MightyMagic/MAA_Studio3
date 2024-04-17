@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -48,7 +46,7 @@ public class ItemActivation : MonoBehaviour
         {
             PlayerPrefs.SetInt("PlayerSpawn", 0);
             PlayerPrefs.SetInt("PhraseIndex", 1);
-            SceneManager.LoadScene("LevelOneArea 1");
+            SceneManager.LoadScene(2);
         }
     }
 
