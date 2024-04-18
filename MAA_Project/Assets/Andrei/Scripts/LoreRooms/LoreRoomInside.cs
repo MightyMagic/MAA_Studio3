@@ -5,6 +5,7 @@ using UnityEngine;
 public class LoreRoomInside : MonoBehaviour
 {
     [SerializeField] LoreRoomManager loreManager;
+    [SerializeField] ItemActivation loreItem;
     bool enteredRoom = false;
     void Start()
     {
@@ -13,7 +14,7 @@ public class LoreRoomInside : MonoBehaviour
 
     private void Update()
     {
-        if(enteredRoom & Input.GetKeyDown(KeyCode.L))
+        if(enteredRoom)
         {
             enteredRoom = false;    
             loreManager.LoreRoomComplete();
@@ -25,6 +26,7 @@ public class LoreRoomInside : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Entered the room");
+            loreItem.uiCanvas.SetActive(true);
             enteredRoom = true;
             loreManager.CloseLoreRoom();
         }

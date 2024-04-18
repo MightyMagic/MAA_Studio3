@@ -11,8 +11,16 @@ public class ItemActivation : MonoBehaviour
     [SerializeField] float delayBetweenSwaps;
 
     [Header("UI")]
-    [SerializeField] GameObject uiCanvas;
-    
+    public GameObject uiCanvas;
+
+
+    [Header("Scene Transition")]
+    [SerializeField] int playerSpawnIndex;
+    [SerializeField] int phraseIndex;
+    [SerializeField] int nextSceneIndex;
+
+    [Header("Delete me later")]
+    [SerializeField] bool startOnLoad = false;
 
     private List<Material> materials = new List<Material>();
     private List<GameObject> children = new List<GameObject>();
@@ -21,7 +29,7 @@ public class ItemActivation : MonoBehaviour
 
     void Start()
     {
-        uiCanvas.SetActive(false);
+        
 
         foreach(Transform child in itemObject.transform)
         {
@@ -37,16 +45,21 @@ public class ItemActivation : MonoBehaviour
             }
         }
 
-       
+
+        uiCanvas.SetActive(false);
+
+        if(startOnLoad) 
+            InvokeRepeating("SwappingMaterials", 0f, delayBetweenSwaps);
+
     }
 
     void Update()
     {
         if(uiCanvas.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
         {
-            PlayerPrefs.SetInt("PlayerSpawn", 0);
-            PlayerPrefs.SetInt("PhraseIndex", 1);
-            SceneManager.LoadScene(2);
+            PlayerPrefs.SetInt("PlayerSpawn", playerSpawnIndex);
+            PlayerPrefs.SetInt("PhraseIndex", phraseIndex);
+            SceneManager.LoadScene(nextSceneIndex);
         }
     }
 

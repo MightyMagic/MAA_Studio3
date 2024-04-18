@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MonsterDirector : MonoBehaviour
 {
@@ -137,7 +138,15 @@ public class MonsterDirector : MonoBehaviour
             monsterScript.ClearStackOfPoints();
             monsterScript.pointsToVisit.Add(monsterScript.player);
             //Chase(true);
-            monsterScript.moveSpeed *= 5f;
+            //monsterScript.moveSpeed *= 5f;
+
+            if(distanceToPlayer < (smallRadius / 2))
+            {
+                print("Skill issue");
+                Debug.LogError("Eaten by monster");
+                PlayerPrefs.SetInt("PlayerSpawn", 1);
+                SceneManager.LoadScene("LevelOneArea 1");
+            }
 
             // = visibleMask;
             //monsterScript.rb.velocity = vectorToPlayer.normalized * monsterScript.moveSpeed;

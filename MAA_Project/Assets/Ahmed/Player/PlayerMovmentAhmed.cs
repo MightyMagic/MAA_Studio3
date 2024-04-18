@@ -28,10 +28,10 @@ public class PlayerMovmentAhmed : MonoBehaviour
         }
         Cursor.lockState = CursorLockMode.Locked;
 
-        if (PlayerPrefs.HasKey("PlayerSpeed"))
-        {
-            playerSpeed = PlayerPrefs.GetFloat("PlayerSpeed");
-        }
+        //if (PlayerPrefs.HasKey("PlayerSpeed"))
+        //{
+        //    playerSpeed = PlayerPrefs.GetFloat("PlayerSpeed");
+        //}
         
     }
     private void LateUpdate()

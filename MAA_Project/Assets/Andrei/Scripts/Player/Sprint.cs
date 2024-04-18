@@ -31,25 +31,25 @@ public class Sprint : MonoBehaviour
         playerMovment = GetComponent<PlayerMovmentAhmed>();
 
         playerInitialSpeed = playerMovment.playerSpeed;
-        if (PlayerPrefs.HasKey("PlayerSpeed"))
-        {
-            playerInitialSpeed = PlayerPrefs.GetFloat("PlayerSpeed");
-        }
-
-        if (PlayerPrefs.HasKey("SprintMultiplier"))
-        {
-            sprintMultiplier = PlayerPrefs.GetFloat("SprintMultiplier");
-        }
-
-        if (PlayerPrefs.HasKey("SprintTimer"))
-        {
-            sprintTimer = PlayerPrefs.GetFloat("SprintTimer");
-        }
-
-        if (PlayerPrefs.HasKey("SprintToRestore"))
-        {
-            sprintToRestore = PlayerPrefs.GetFloat("SprintToRestore");
-        }
+       // if (PlayerPrefs.HasKey("PlayerSpeed"))
+       // {
+       //     playerInitialSpeed = PlayerPrefs.GetFloat("PlayerSpeed");
+       // }
+       //
+       // if (PlayerPrefs.HasKey("SprintMultiplier"))
+       // {
+       //     sprintMultiplier = PlayerPrefs.GetFloat("SprintMultiplier");
+       // }
+       //
+       // if (PlayerPrefs.HasKey("SprintTimer"))
+       // {
+       //     sprintTimer = PlayerPrefs.GetFloat("SprintTimer");
+       // }
+       //
+       // if (PlayerPrefs.HasKey("SprintToRestore"))
+       // {
+       //     sprintToRestore = PlayerPrefs.GetFloat("SprintToRestore");
+       // }
 
         sprintSlider.maxValue = sprintTimer;
         sprintSlider.minValue = 0f;

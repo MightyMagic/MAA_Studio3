@@ -92,7 +92,7 @@ public class SimpleDialogue : MonoBehaviour
         audioSource.PlayOneShot(dialogueObject.clip);
 
         subtitlePlaceHolder.enabled = true;
-        subtitlePlaceHolder.text = dialogueObject.text;
+        subtitlePlaceHolder.text = dialogueObject.characterName.ToString() + ": " + dialogueObject.text;
 
         yield return new WaitForSeconds(timer + 1f);
 

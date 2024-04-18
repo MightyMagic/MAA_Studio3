@@ -23,7 +23,7 @@ public class EyesClosedEnvironment : MonoBehaviour
 
     void Start()
     {
-        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>(true);
 
         for(int i = 0; i < allObjects.Length; i++)
         {
@@ -96,7 +96,7 @@ public class EyesClosedEnvironment : MonoBehaviour
 
         for(int i = 0; i < floorObjects.Count; i++)
         {
-            Debug.LogError("Entered first cycle");
+            //Debug.LogError("Entered first cycle");
 
             
             GameObject go = Instantiate(floorObjects[i], floorObjects[i].transform.position, floorObjects[i].transform.rotation);
@@ -144,7 +144,7 @@ public class EyesClosedEnvironment : MonoBehaviour
 
         for (int i = 0; i < arrayOfSurroundings.Count; i++)
         {
-            Debug.LogError("Entered second cycle");
+            //Debug.LogError("Entered second cycle");
 
 
             GameObject go = Instantiate(arrayOfSurroundings[i], arrayOfSurroundings[i].transform.position, arrayOfSurroundings[i].transform.rotation);

@@ -2052,24 +2052,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObjects:
   - text: As you can see, the subconscious space is very much alive. I will teach
-      you how to take control and sustain these nightmares during our sessions.
-    clip: {fileID: 8300000, guid: e16b8b0be074fd04b8b333c910ed3a87, type: 3}
+      you how to take control and sustain these nightmares.
+    clip: {fileID: 8300000, guid: c7afc2e1acd4f244ebb7e79d7e11766e, type: 3}
     characterName: 1
   - text: The trick is in focusing on your surroundings and eventually learning to
       keep the imaginary part confined. After focusing strongly enough you will be
       able to escape even the darkest of nightmares.
-    clip: {fileID: 8300000, guid: f81b0fc6c7f8ebc4b900574dd1fe54c2, type: 3}
+    clip: {fileID: 8300000, guid: 3319781828b9ad7469c7cd44aecebffa, type: 3}
     characterName: 1
   - text: "Phew, that\u2019s a lot to process."
-    clip: {fileID: 8300000, guid: afa40b38dcbcd92439067023c48e4b5c, type: 3}
+    clip: {fileID: 8300000, guid: ec3c5f0c564c071429970187034edf54, type: 3}
     characterName: 0
   - text: "That\u2019s an interesting angle, I think it\u2019s becoming more clear
       to me now."
-    clip: {fileID: 8300000, guid: 1173e9eec52f14f43a46d0114347e9da, type: 3}
+    clip: {fileID: 8300000, guid: d72402ab3091e6c4c93cbe4a4b9290ec, type: 3}
     characterName: 0
   - text: "But let\u2019s first discuss the very beginning. When was the first time
       you experienced the visions?  "
-    clip: {fileID: 8300000, guid: 4fea3a5cd6fa6094a9cea79c0ef12173, type: 3}
+    clip: {fileID: 8300000, guid: 292cc4128d05c1a429309c4a0b4bd1b2, type: 3}
     characterName: 1
   audioSource: {fileID: 1023813503}
   emilyOptions:
@@ -11219,6 +11219,9 @@ MonoBehaviour:
   disruptedMat: {fileID: 2100000, guid: d47ed8911a95c4a49add8699d58bd81b, type: 2}
   delayBetweenSwaps: 1
   uiCanvas: {fileID: 2059799231}
+  playerSpawnIndex: 0
+  phraseIndex: 1
+  nextSceneIndex: 2
 --- !u!4 &620089212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f9e448e42ff31da4d80acefd21b0aa48, type: 3}
@@ -35028,12 +35031,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 50
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 10
-  m_fontSizeMax: 72
+  m_fontSizeMax: 50
   m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512

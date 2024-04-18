@@ -82,7 +82,7 @@ public class LoreRoomManager : MonoBehaviour
 
     public void FecthPreviousPhrases(int phrasesIndex)
     {
-        Debug.LogError("Entering fetching phase here!");
+        //Debug.LogError("Entering fetching phase here!");
         //int phraseCount = CurrentPhrasesToOpenRoom();
         //phrasesIndex--;
 
@@ -163,7 +163,7 @@ public class LoreRoomManager : MonoBehaviour
 
     public void LoreRoomComplete()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        //SceneManager.LoadScene(sceneToLoad);
 
         wallBehindDoor.SetActive(false);
         eyeScript.enabled = true;

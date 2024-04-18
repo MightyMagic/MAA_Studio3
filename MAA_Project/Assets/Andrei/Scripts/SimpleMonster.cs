@@ -32,10 +32,10 @@ public class SimpleMonster : MonoBehaviour
     {
         //grid.CreateGrid();
 
-        if (PlayerPrefs.HasKey("MonsterSpeed"))
-        {
-            moveSpeed = PlayerPrefs.GetFloat("MonsterSpeed");
-        }
+        //if (PlayerPrefs.HasKey("MonsterSpeed"))
+        //{
+        //    moveSpeed = PlayerPrefs.GetFloat("MonsterSpeed");
+        //}
 
         rb = GetComponent<Rigidbody>();
         monsterDirector = GetComponent<MonsterDirector>();
@@ -140,7 +140,7 @@ public class SimpleMonster : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" || collision.gameObject.name == "PlayerAhmed" || collision.gameObject.GetComponent<CharacterController>())
         {
             print("Skill issue");
             Debug.LogError("Eaten by monster");
