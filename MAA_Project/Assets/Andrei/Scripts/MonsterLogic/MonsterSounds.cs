@@ -6,12 +6,17 @@ public class MonsterSounds : MonoBehaviour
 {
     [SerializeField] List<AudioClip> monsterSounds = new List<AudioClip>();
     [SerializeField] AudioSource monsterSoundSource;
-    [SerializeField] float coolDown;
+    [SerializeField] float coolDownBottom;
+    [SerializeField] float coolDownTop;
 
+
+    float coolDown;
     float timer = 0f;
     List<AudioClip> soundsBuffer = new List<AudioClip>();
+
     void Start()
     {
+        coolDown = Random.Range(coolDownBottom, coolDownTop);
       
     }
 
@@ -23,8 +28,12 @@ public class MonsterSounds : MonoBehaviour
         }
         else
         {
-            timer = 0f;
-            PlayRandomSound();
+            if (!monsterSoundSource.isPlaying)
+            {
+                timer = 0f;
+                coolDown = Random.Range(coolDownBottom, coolDownTop);
+                PlayRandomSound();
+            }
         }
     }
 

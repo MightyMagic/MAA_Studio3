@@ -114,8 +114,10 @@ public class EyesClosedEnvironment : MonoBehaviour
 
                 if (meshRenderer != null)
                 {
-                    meshRenderer.sharedMaterial = floorMaterial;
+                    //meshRenderer.sharedMaterial = floorMaterial;
                     //meshRenderer.material = floorMaterial;
+
+                    meshRenderer.materials = new Material[] { floorMaterial };
                 }
                 
             }
@@ -175,7 +177,8 @@ public class EyesClosedEnvironment : MonoBehaviour
 
                 if (meshRenderer != null)
                 {
-                    meshRenderer.sharedMaterial = surroundingMaterial;
+                    //meshRenderer.sharedMaterial = surroundingMaterial;
+                    meshRenderer.materials = new Material[] { surroundingMaterial };
                 }   
             }
             else
