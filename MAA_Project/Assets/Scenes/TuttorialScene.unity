@@ -1194,6 +1194,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3435649339886331713, guid: 13c1ca2e4d693944f8699bd6459d148d, type: 3}
+      propertyPath: m_StepOffset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3587770975010642970, guid: 13c1ca2e4d693944f8699bd6459d148d, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -5105,6 +5109,10 @@ PrefabInstance:
       propertyPath: points.Array.data[2]
       value: 
       objectReference: {fileID: 1010049928}
+    - target: {fileID: 343917903348690571, guid: 2975c3480adfa8946b4222eca988905e, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 8028820418229112607, guid: 2975c3480adfa8946b4222eca988905e, type: 3}
       propertyPath: m_Name
       value: NPC
