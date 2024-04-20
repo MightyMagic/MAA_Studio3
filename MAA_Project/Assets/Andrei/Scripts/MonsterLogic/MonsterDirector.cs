@@ -14,6 +14,8 @@ public class MonsterDirector : MonoBehaviour
     [SerializeField] List<ChunkWaypoints> chunkWaypoints;
     [SerializeField] Eyes eyeScript;
 
+    [SerializeField] MonsterSounds soundScript;
+
     [SerializeField] LayerMask visibleMask;
     LayerMask startingMask;
 
@@ -135,10 +137,15 @@ public class MonsterDirector : MonoBehaviour
         {
             playerIsDead = true;
 
+            if(!soundScript.monsterSoundSource.isPlaying)
+            {
+                soundScript.PlayRandomSound();
+            }
+
             monsterScript.ClearStackOfPoints();
             monsterScript.pointsToVisit.Add(monsterScript.player);
             //Chase(true);
-            //monsterScript.moveSpeed *= 5f;
+            //monsterScript.moveSpeed /= 
 
             if(distanceToPlayer < (smallRadius / 2))
             {
