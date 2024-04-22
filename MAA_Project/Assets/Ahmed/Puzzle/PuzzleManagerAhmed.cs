@@ -15,6 +15,7 @@ public class PuzzleManagerAhmed : MonoBehaviour
     [SerializeField] List<TextMeshProUGUI> panelOrderedTexts = new List<TextMeshProUGUI>();
     [SerializeField] List<PuzzleWordSO> listOfCorrectOrder = new List<PuzzleWordSO>();
     [SerializeField] List<DuplicateTextEffect> duplicateTexts = new List<DuplicateTextEffect>();
+    [SerializeField] private List<TextMeshProUGUI> hiddenTextToBeShownAfterAllFilled = new List<TextMeshProUGUI>();
     [SerializeField] float activationAngle = 50f;
     public bool allCanvasFilled;
 
@@ -49,6 +50,13 @@ public class PuzzleManagerAhmed : MonoBehaviour
             }
         }
 
+        if (allCanvasFilled)
+        {
+            foreach (TextMeshProUGUI text in hiddenTextToBeShownAfterAllFilled )
+            {
+                text.enabled = true;
+            }
+        }
         // Add word to panel if conditions are met
         for (int i = 0; i < canvasTexts.Count; i++)
         {
