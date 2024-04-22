@@ -6,7 +6,7 @@ using UnityEngine;
 public class NpcAI : MonoBehaviour
 {
     
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] public Rigidbody rb;
     [SerializeField] private TalkToPlayerCoroutineManager _manager;
     [SerializeField] PathFinding path;
     [SerializeField] GridX grid;
@@ -14,6 +14,7 @@ public class NpcAI : MonoBehaviour
     [SerializeField] List<Transform> points = new List<Transform>();
     [SerializeField] List<Vector3> destinations = new List<Vector3>();
     [SerializeField] public PuzzleCatcher _puzzleCatcher;
+    [SerializeField] public PuzzleManagerAhmed _PuzzleManager;
     [SerializeField] float moveSpeed;
     public int pointNum;
     private BTNode topNode;
@@ -47,9 +48,12 @@ public class NpcAI : MonoBehaviour
         CheckSecondPhrase checkSecondPhrase = new CheckSecondPhrase(this);
         CheckFirstDestinationPoint checkFirstPoint = new CheckFirstDestinationPoint(this);
         CheckSecondDestinationPoint checkSecondPoint = new CheckSecondDestinationPoint(this);
+        CheckAllPhrasesCaptured phrasesCaptured = new CheckAllPhrasesCaptured(this);
+        CheckFifthDialouge checkFifthDialouge = new CheckFifthDialouge(_manager, this);
         
         // Assemble tree
-        
+
+        BTSequence guidePlayerToAssemble = new BTSequence(new List<BTNode> { phrasesCaptured,checkFifthDialouge, talk });
         BTInvertor notInRange = new BTInvertor(range);
         BTSequence secondMove = new BTSequence(new List<BTNode>() { checkSecondPoint, moveNpc });
         BTSequence waiteForPlayerToCatchSecondPhrase =
@@ -62,7 +66,7 @@ public class NpcAI : MonoBehaviour
         BTSequence firstDialog = new BTSequence(new List<BTNode> { checkFirstDialog, talk });
         BTSelector firstMove = new BTSelector(new List<BTNode>{firstDialog,moveToFirstPoint});
         BTSequence firstEncounter = new BTSequence(new List<BTNode> { checkIntroduced, notInRange });
-        topNode = new BTSelector(new List<BTNode> {firstEncounter, firstMove ,makePlayerCapturePhrase});
+        topNode = new BTSelector(new List<BTNode> {guidePlayerToAssemble,firstEncounter, firstMove ,makePlayerCapturePhrase});
     }
     private void BuildPathToPointNpc(Transform point)
     {

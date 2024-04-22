@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class TalkToPlayerCoroutineManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
     [SerializeField] private Canvas npcCanvas;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private List<NpcDialougesSO> dialog;
+    [SerializeField] private AudioSource audio;
+    [SerializeField] private Material dissolveMaterial;
     public int dialogIndex = 0;
     
     public bool isFinishedTalking;
@@ -23,10 +26,13 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
         isStartedTalking = true;
         npcCanvas.gameObject.SetActive(true);
         text.text = dialog[dialogIndex].lineOne;
+        audio.Play();
         yield return new WaitForSecondsRealtime(dialog[dialogIndex].timeToWaiteOne);
         text.text = dialog[dialogIndex].lineTwo;
+        audio.Play();
         yield return new WaitForSecondsRealtime(dialog[dialogIndex].timeToWaiteTwo);
         text.text = dialog[dialogIndex].lineThree;
+        audio.Play();
        yield return new WaitForSeconds(dialog[dialogIndex].timeToWaiteThree);
        
        npcCanvas.gameObject.SetActive(false);
@@ -39,6 +45,20 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
        if (dialogIndex == 4)
        {
           npc.pointNum = 2;
+          yield return new WaitForSeconds(1);
+          for (float i = 0; i <= 1; i += .01f)
+          {
+            dissolveMaterial.SetFloat("_DissolveAmount", i );
+            dissolveMaterial.SetFloat("_GlowRange",i/2);
+            dissolveMaterial.SetFloat("_GlowFalloff",i/2);
+            yield return new WaitForSeconds(.01f);
+          }
+          npc.GetComponent<Rigidbody>().IsDestroyed();
+          npc.GetComponent<Collider>().enabled = false;
+          npc.GetComponent<MeshRenderer>().enabled = false;
+          npc.GetComponentInChildren<MeshRenderer>().enabled = false;
+          npc.GetComponentInChildren<Collider>().enabled = false;
+          
        }
     }
 }
