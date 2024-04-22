@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterSounds : MonoBehaviour
 {
     [SerializeField] List<AudioClip> monsterSounds = new List<AudioClip>();
-    public AudioSource monsterSoundSource;
+    [SerializeField] AudioSource monsterSoundSource;
     [SerializeField] float coolDownBottom;
     [SerializeField] float coolDownTop;
 

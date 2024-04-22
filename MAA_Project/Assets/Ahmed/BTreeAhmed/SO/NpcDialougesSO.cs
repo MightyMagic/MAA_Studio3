@@ -11,8 +11,5 @@ public class NpcDialougesSO : ScriptableObject
     public float timeToWaiteOne;
     public float timeToWaiteTwo;
     public float timeToWaiteThree;
-    public AudioClip AudioClipOne;
-    public AudioClip AudioClipTwo;
-    public AudioClip AudioClipThree;
 
 }

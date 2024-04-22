@@ -10015,134 +10015,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2271631511990167551, guid: dc654ba0e0885a844b7c9275165aff81, type: 3}
   m_PrefabInstance: {fileID: 940198382}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &947334618
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 947334620}
-  - component: {fileID: 947334619}
-  m_Layer: 0
-  m_Name: MonsterAudio
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &947334619
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 947334618}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5c71f541e39e4d94db073d4b8533e6a7, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.15
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 15
-  Pan2D: 0
-  rolloffMode: 1
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &947334620
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 947334618}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 77.6947, y: 70.027985, z: 85.25011}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &952340212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14473,7 +14345,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1343966942}
-  - component: {fileID: 1343966943}
   m_Layer: 0
   m_Name: Monsters
   m_TagString: Untagged
@@ -14730,24 +14601,6 @@ Transform:
   - {fileID: 2047414938}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1343966943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1343966941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b616ab5025e1921419e455bd2cb880b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: 6b131c9cdf7fe9749abe869782ab9cff, type: 2}
-  - {fileID: 2100000, guid: 96470053c5a3a0c4fb158b9adef7644d, type: 2}
-  - {fileID: 2100000, guid: 78bb35c3cdfe74942aabb75ae4da68fc, type: 2}
-  chasingMonsters: []
-  monsterSource: {fileID: 947334619}
 --- !u!1001 &1349363972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23729,7 +23582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a207e1e87f2c4ee478ed57136287e641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 2.5
+  playerSpeed: 1.5
   mouseVerticalSpeed: 2
   mouseHorizontalSpeed: 2
   lookPoint: {fileID: 134163429}
@@ -24400,4 +24253,3 @@ SceneRoots:
   - {fileID: 1894877669}
   - {fileID: 813814526}
   - {fileID: 692016027}
-  - {fileID: 947334620}

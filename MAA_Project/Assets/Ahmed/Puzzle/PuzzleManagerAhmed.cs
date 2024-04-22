@@ -11,13 +11,11 @@ public class PuzzleManagerAhmed : MonoBehaviour
     [SerializeField] Canvas puzzleCanvas;
     [SerializeField] puzzleCaptcherMeter meter;
     [SerializeField] GameObject catcherWindowInClosedeyes;
-    [SerializeField] public List<WordInSpace> canvasTexts = new List<WordInSpace>();
+    [SerializeField] List<WordInSpace> canvasTexts = new List<WordInSpace>();
     [SerializeField] List<TextMeshProUGUI> panelOrderedTexts = new List<TextMeshProUGUI>();
     [SerializeField] List<PuzzleWordSO> listOfCorrectOrder = new List<PuzzleWordSO>();
     [SerializeField] List<DuplicateTextEffect> duplicateTexts = new List<DuplicateTextEffect>();
-    [SerializeField] private List<TextMeshProUGUI> hiddenTextToBeShownAfterAllFilled = new List<TextMeshProUGUI>();
     [SerializeField] float activationAngle = 50f;
-    public bool allCanvasFilled;
 
     [SerializeField] int gameCompleteSceneIndex;
 
@@ -38,8 +36,8 @@ public class PuzzleManagerAhmed : MonoBehaviour
 
     void AddWordToPanel()
     {
-        allCanvasFilled = true;
-        
+        bool allCanvasFilled = true;
+
         // Check if all canvas text slots are filled
         foreach (WordInSpace wordInSpace in canvasTexts)
         {
@@ -50,13 +48,6 @@ public class PuzzleManagerAhmed : MonoBehaviour
             }
         }
 
-        if (allCanvasFilled)
-        {
-            foreach (TextMeshProUGUI text in hiddenTextToBeShownAfterAllFilled )
-            {
-                text.enabled = true;
-            }
-        }
         // Add word to panel if conditions are met
         for (int i = 0; i < canvasTexts.Count; i++)
         {

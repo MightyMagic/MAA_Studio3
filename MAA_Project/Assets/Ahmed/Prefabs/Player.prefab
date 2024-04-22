@@ -941,12 +941,10 @@ MonoBehaviour:
   mouseVerticalSpeed: 2
   mouseHorizontalSpeed: 2
   lookPoint: {fileID: 6209198552308344121}
-  openPuzzleWindow: 0
+  interactbleCanvas: {fileID: 0}
   canvas: {fileID: 4442524899181546875}
   puzzleSpace: {fileID: 0}
   eyesCamera: {fileID: 0}
-  bottomXCamera: 30
-  topXCamera: 30
 --- !u!143 &3435649339886331713
 CharacterController:
   m_ObjectHideFlags: 0
@@ -969,7 +967,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0
+  m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -998,7 +996,6 @@ MonoBehaviour:
   activationAngle: 30
   captureAngle: 10
   activationDistance: 5
-  loreManager: {fileID: 0}
   monsterDirector: {fileID: 0}
 --- !u!1 &4044979714308946141
 GameObject:

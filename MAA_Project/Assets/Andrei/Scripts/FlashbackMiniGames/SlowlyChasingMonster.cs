@@ -10,7 +10,7 @@ public class SlowlyChasingMonster : MonoBehaviour
     [SerializeField] float distanceToStop;
     [SerializeField] float distanceToAwake;
 
-    MonsterGroup monsterGroup;   
+   
 
     Rigidbody rb;
     GameObject player;
@@ -30,8 +30,6 @@ public class SlowlyChasingMonster : MonoBehaviour
 
         initialPosition = new Vector3(transform.position.x, 0f, transform.position.z);
 
-        monsterGroup = GameObject.Find("Monsters").GetComponent<MonsterGroup>();
-
         //gameObject.SetActive(false);
     }
 
@@ -46,28 +44,14 @@ public class SlowlyChasingMonster : MonoBehaviour
             RotateTowardsTarget();
         }
 
-        if (playerVector.magnitude < distanceToAwake && isAsleep & monsterGroup.chasingMonsters.Count < 1)
+        if (playerVector.magnitude < distanceToAwake && isAsleep)
         {
-            monsterGroup.chasingMonsters.Add(this);
-            monsterGroup.PlaySoundOfTheAttackingMonster(this.transform);
             initialPosition = new Vector3(transform.position.x, 0f, transform.position.z);
             isAsleep = false;
         }
 
         Appear(playerVector.magnitude);
                  
-    }
-
-    public void AssignMaterial(Material mat)
-    {
-        foreach(Transform t in transform.GetChild(0))
-        {
-            if (t.GetComponent<Renderer>())
-            {
-                t.GetComponent<Renderer>().material = mat;
-            }
-        }
-
     }
 
     void RotateTowardsTarget()
@@ -95,9 +79,6 @@ public class SlowlyChasingMonster : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             isAsleep = true;
-
-            monsterGroup.StopMonsterSound();
-            monsterGroup.chasingMonsters.Clear();
             //this.enabled = false;
         }
     }

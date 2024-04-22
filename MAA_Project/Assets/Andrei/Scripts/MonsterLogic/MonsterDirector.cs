@@ -14,8 +14,6 @@ public class MonsterDirector : MonoBehaviour
     [SerializeField] List<ChunkWaypoints> chunkWaypoints;
     [SerializeField] Eyes eyeScript;
 
-    [SerializeField] MonsterSounds soundScript;
-
     [SerializeField] LayerMask visibleMask;
     LayerMask startingMask;
 
@@ -137,30 +135,25 @@ public class MonsterDirector : MonoBehaviour
         {
             playerIsDead = true;
 
-            if(!soundScript.monsterSoundSource.isPlaying)
-            {
-                soundScript.PlayRandomSound();
-            }
-
             monsterScript.ClearStackOfPoints();
             monsterScript.pointsToVisit.Add(monsterScript.player);
             //Chase(true);
-            //monsterScript.moveSpeed /= 
+            //monsterScript.moveSpeed *= 5f;
+
+            if(distanceToPlayer < (smallRadius / 2))
+            {
+                print("Skill issue");
+                Debug.LogError("Eaten by monster");
+                PlayerPrefs.SetInt("PlayerSpawn", 1);
+                SceneManager.LoadScene("LevelOneArea 1");
+            }
 
             // = visibleMask;
             //monsterScript.rb.velocity = vectorToPlayer.normalized * monsterScript.moveSpeed;
         }
 
-        if (distanceToPlayer < (smallRadius * 0.7f))
-        {
-            print("Skill issue");
-            Debug.LogError("Eaten by monster");
-            PlayerPrefs.SetInt("PlayerSpawn", 1);
-            SceneManager.LoadScene("LevelOneArea 1");
-        }
-
         // Monster lost you, so goes back to patrolling
-        if (distanceToPlayer > mediumRadius && chasing)
+        if(distanceToPlayer > mediumRadius && chasing)
         {
             patrolling = true;
             chasing = false;

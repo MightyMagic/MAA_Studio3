@@ -63,24 +63,16 @@ public class PuzzleCatcher : MonoBehaviour
                                 // check for amount of captured rooms
                                 phraseCount++;
                                 //if enough, open the lore room
-                                if (loreManager != null)
+                                if(phraseCount == loreManager.CurrentPhrasesToOpenRoom())
                                 {
-                                    if(phraseCount == loreManager.CurrentPhrasesToOpenRoom())
-                                    {
-                                        loreManager.OpenLoreRoom();
-                                        // Open the lore room;
-                                    }
+                                    loreManager.OpenLoreRoom();
+                                    // Open the lore room;
                                 }
-                                
                                 // tell the monster to investigate
-                                if (monsterDirector != null)
+                                if (!monsterDirector.chasing && monsterDirector.isActiveAndEnabled)
                                 {
-                                    if (!monsterDirector.chasing && monsterDirector.isActiveAndEnabled)
-                                    {
-                                        monsterDirector.Investigate();
-                                    }
+                                    monsterDirector.Investigate();
                                 }
-                                
                                 //
 
                                 CapturedWords.Add(puzzleWords[i]);
