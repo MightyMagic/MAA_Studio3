@@ -13,10 +13,10 @@ public class CheckSecondPhrase : BTNode
     {
         if (_npcAI._puzzleCatcher.puzzleWords[1].captured)
         {
-            Debug.Log("Captured second phrase");
+           
             return BTNodeState.SUCCESS;
         }
-            Debug.Log("not working");
+           
         return BTNodeState.FAILURE;
     }
 }
