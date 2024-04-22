@@ -147,20 +147,20 @@ public class MonsterDirector : MonoBehaviour
             //Chase(true);
             //monsterScript.moveSpeed /= 
 
-            if(distanceToPlayer < (smallRadius / 2))
-            {
-                print("Skill issue");
-                Debug.LogError("Eaten by monster");
-                PlayerPrefs.SetInt("PlayerSpawn", 1);
-                SceneManager.LoadScene("LevelOneArea 1");
-            }
-
             // = visibleMask;
             //monsterScript.rb.velocity = vectorToPlayer.normalized * monsterScript.moveSpeed;
         }
 
+        if (distanceToPlayer < (smallRadius * 0.7f))
+        {
+            print("Skill issue");
+            Debug.LogError("Eaten by monster");
+            PlayerPrefs.SetInt("PlayerSpawn", 1);
+            SceneManager.LoadScene("LevelOneArea 1");
+        }
+
         // Monster lost you, so goes back to patrolling
-        if(distanceToPlayer > mediumRadius && chasing)
+        if (distanceToPlayer > mediumRadius && chasing)
         {
             patrolling = true;
             chasing = false;
