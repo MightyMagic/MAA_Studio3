@@ -1,4 +1,4 @@
-Shader "Tutorial/038_dissolve" {
+Shader "AhmedShader/dissolve" {
     Properties {
         _Color ("Tint", Color) = (0, 0, 0, 1)
         _MainTex ("Texture", 2D) = "white" {}

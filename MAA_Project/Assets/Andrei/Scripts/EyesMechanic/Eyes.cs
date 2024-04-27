@@ -126,11 +126,14 @@ public class Eyes : MonoBehaviour
                 //StartCoroutine(shuffler.RebuildGrid());
 
                 //shuffler.FullLayoutSwap();
-                StartCoroutine(shuffler.FullLAyoutSwapCoroutine());
+                if (shuffler != null)
+                {
+                    StartCoroutine(shuffler.FullLAyoutSwapCoroutine());
+                }
             }
         }
 
-        EnableObjectsInProximity(distanceToSee);
+        //EnableObjectsInProximity(distanceToSee);
     }
 
     void CloseEyes(bool state)

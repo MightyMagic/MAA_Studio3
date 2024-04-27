@@ -8,6 +8,7 @@ public class NpcAI : MonoBehaviour
     
     [SerializeField] public Rigidbody rb;
     [SerializeField] private TalkToPlayerCoroutineManager _manager;
+    [SerializeField] public Animator _animator;
     [SerializeField] PathFinding path;
     [SerializeField] GridX grid;
     [SerializeField] float detectRange;
@@ -38,7 +39,7 @@ public class NpcAI : MonoBehaviour
         Idle idle = new Idle();
         RangeNode range = new RangeNode(detectRange,transform,player.transform,alreadyIntroduced);
         TalkToPlayer talk = new TalkToPlayer(_manager, this,player);
-        MoveNpcToPoint moveNpc = new MoveNpcToPoint(points,destinations, pointNum, this.transform, player ,this);
+        MoveNpcToPoint moveNpc = new MoveNpcToPoint(points,destinations, pointNum, this.transform, player ,this,_animator);
         AlreadyIntroduced checkIntroduced = new AlreadyIntroduced(range);
         CheckFirstDialog checkFirstDialog = new CheckFirstDialog(_manager);
         CheckSecondDialog checkSecondDialog = new CheckSecondDialog(_manager);
@@ -95,10 +96,12 @@ public class NpcAI : MonoBehaviour
             rb.velocity = currentTarget * moveSpeed;
             Quaternion lookAtDest = Quaternion.LookRotation(currentTarget);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookAtDest, 5f * Time.deltaTime);
+            _animator.SetBool("Walking", true);
         }
         else
         {
             rb.velocity = Vector3.zero;
+            //_animator.SetBool("Walking", false);
         }
     }
     
