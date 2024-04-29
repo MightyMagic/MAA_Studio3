@@ -11,9 +11,10 @@ namespace Ahmed.BTreeAhmed.Nodes
         private NpcAI npcAI;
         public int pointNum;
         private bool addNextPoint;
+        private Animator _animator;
         Transform go;
 
-        public MoveNpcToPoint(List<Transform> points,List<Vector3> destinations, int pointNum, Transform npc, Transform go, NpcAI npcAI)
+        public MoveNpcToPoint(List<Transform> points,List<Vector3> destinations, int pointNum, Transform npc, Transform go, NpcAI npcAI, Animator animator)
         {
             this.points = points;
             this.npc = npc;
@@ -28,6 +29,7 @@ namespace Ahmed.BTreeAhmed.Nodes
             float distance = Vector3.Distance(npc.position, points[npcAI.pointNum].position);
             if (distance <= 4f)
             {
+                npcAI._animator.SetBool("Walking",false);
                 return BTNodeState.FAILURE;
             }
             return BTNodeState.SUCCESS;

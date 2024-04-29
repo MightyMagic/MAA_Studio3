@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,20 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
     [SerializeField] private List<NpcDialougesSO> dialog;
     [SerializeField] private AudioSource audio;
     [SerializeField] private Material dissolveMaterial;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private ParticleSystem[] _particles;
     public int dialogIndex = 0;
     
     public bool isFinishedTalking;
     public bool isStartedTalking;
+
+    private void Start()
+    {
+        dissolveMaterial.SetFloat("_DissolveAmount", 0 );
+        dissolveMaterial.SetFloat("_GlowRange",0);
+        dissolveMaterial.SetFloat("_GlowFalloff",0.001f);
+    }
+
     public void StartTalkingCoroutine()
     {
         StartCoroutine(StartTalking());
@@ -24,6 +35,7 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
     IEnumerator StartTalking()
     {
         isStartedTalking = true;
+        _animator.SetBool("Talking",true);
         npcCanvas.gameObject.SetActive(true);
         text.text = dialog[dialogIndex].lineOne;
         audio.Play();
@@ -34,6 +46,7 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
         text.text = dialog[dialogIndex].lineThree;
         audio.Play();
        yield return new WaitForSeconds(dialog[dialogIndex].timeToWaiteThree);
+       _animator.SetBool("Talking",false);
        
        npcCanvas.gameObject.SetActive(false);
        dialogIndex++;
@@ -51,6 +64,10 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
             dissolveMaterial.SetFloat("_DissolveAmount", i );
             dissolveMaterial.SetFloat("_GlowRange",i/2);
             dissolveMaterial.SetFloat("_GlowFalloff",i/2);
+            foreach (ParticleSystem particle in _particles)
+            {
+                particle.Stop();
+            }
             yield return new WaitForSeconds(.01f);
           }
           npc.GetComponent<Rigidbody>().IsDestroyed();
