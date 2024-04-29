@@ -44,4 +44,9 @@ public class SimpleMenu : MonoBehaviour
     {
         SceneManager.LoadScene("SimpleMainMenu");
     }
+
+    public void LoadByIndex(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
 }

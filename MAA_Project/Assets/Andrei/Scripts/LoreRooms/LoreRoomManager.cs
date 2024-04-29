@@ -18,6 +18,8 @@ public class LoreRoomManager : MonoBehaviour
     [SerializeField] GameObject OutsideRoomTrigger;
 
     public int phraseIndex;
+
+    public int alreadyFetchedCount {  get; private set; }
     
 
     [Header("Monster and player")]
@@ -36,6 +38,8 @@ public class LoreRoomManager : MonoBehaviour
     private void Awake()
     {
         //PlayerPrefs.SetInt("PhraseIndex", phraseIndex);
+
+        alreadyFetchedCount = 0;
 
         monsterSpeed = monsterScript.moveSpeed;
         roomObject.SetActive(false);
@@ -85,6 +89,7 @@ public class LoreRoomManager : MonoBehaviour
         //Debug.LogError("Entering fetching phase here!");
         //int phraseCount = CurrentPhrasesToOpenRoom();
         //phrasesIndex--;
+        alreadyFetchedCount = 0;
 
         if(phrasesIndex > -1)
         {
@@ -97,10 +102,14 @@ public class LoreRoomManager : MonoBehaviour
                     puzzleCatcher.CapturedWords.Add(phrasesToActivate[i].phraseObjects[j].phraseObject);
                     phrasesToActivate[i].phraseObjects[j].phraseObject.captured = true;
                     phrasesToActivate[i].phraseObjects[j].phraseObject.currentMeter = 1.1f;
+
+                    alreadyFetchedCount++;
                 }
             }
         }       
     }
+
+    public int TotalToFetch {  get { return phrasesToActivate[LatestPhraseIndex()].phraseObjects.Count + alreadyFetchedCount;  } }
 
     public void SpawnCurrentPhrases(int phrasesIndex)
     {

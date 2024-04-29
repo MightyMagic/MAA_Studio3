@@ -25,6 +25,9 @@ public class PuzzleCatcher : MonoBehaviour
     [Header("Monster")]
     [SerializeField] MonsterDirector monsterDirector;
 
+    [Header("Player")]
+    [SerializeField] PhraseCounter phraseCounter;
+
     private void Update()
     {
         CapturePuzzlesOnWalls();
@@ -80,7 +83,11 @@ public class PuzzleCatcher : MonoBehaviour
                                         monsterDirector.Investigate();
                                     }
                                 }
-                                
+
+                                // play a coroutine of the ui
+
+                                StartCoroutine(phraseCounter.CapturedPhrase());
+
                                 //
 
                                 CapturedWords.Add(puzzleWords[i]);

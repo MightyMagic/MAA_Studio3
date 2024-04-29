@@ -44,35 +44,35 @@ public class ChunkShuffle : MonoBehaviour
     
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.Space))
-       {
-            //SaveRelativeObjectsPositions();
-            //
-            //RearrangeChunks();
-            //StartCoroutine(RebuildGrid());
-            //
-            //MoveObjectsToRelativePositions();
-
-            //FullLayoutSwap();
-
-            StartCoroutine(FullLAyoutSwapCoroutine());
-       }
-
-       // if (Input.GetKeyDown(KeyCode.LeftShift))
+       //if(Input.GetKeyDown(KeyCode.Space))
+       //{
+       //     //SaveRelativeObjectsPositions();
+       //     //
+       //     //RearrangeChunks();
+       //     //StartCoroutine(RebuildGrid());
+       //     //
+       //     //MoveObjectsToRelativePositions();
+       //
+       //     //FullLayoutSwap();
+       //
+       //     StartCoroutine(FullLAyoutSwapCoroutine());
+       //}
+       //
+       //// if (Input.GetKeyDown(KeyCode.LeftShift))
+       //// {
+       ////     aStarGrid.CreateGrid();
+       ////     monsterScript.ClearStackOfPoints();
+       //// }
+       //
+       // if (Input.GetKeyDown(KeyCode.RightShift))
        // {
-       //     aStarGrid.CreateGrid();
-       //     monsterScript.ClearStackOfPoints();
+       //     RearrangeChunks();
        // }
-
-        if (Input.GetKeyDown(KeyCode.RightShift))
-        {
-            RearrangeChunks();
-        }
-
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            RearrangeChunks();
-        }
+       //
+       // if(Input.GetKeyDown(KeyCode.M))
+       // {
+       //     RearrangeChunks();
+       // }
 
     }
 

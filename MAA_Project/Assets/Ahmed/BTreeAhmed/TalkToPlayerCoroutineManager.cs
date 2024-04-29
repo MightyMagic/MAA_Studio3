@@ -41,11 +41,13 @@ public class TalkToPlayerCoroutineManager : MonoBehaviour
         audio.Play();
         yield return new WaitForSecondsRealtime(dialog[dialogIndex].timeToWaiteOne);
         text.text = dialog[dialogIndex].lineTwo;
-        audio.Play();
+        if(!audio.isPlaying)
+            audio.Play();
         yield return new WaitForSecondsRealtime(dialog[dialogIndex].timeToWaiteTwo);
         text.text = dialog[dialogIndex].lineThree;
-        audio.Play();
-       yield return new WaitForSeconds(dialog[dialogIndex].timeToWaiteThree);
+        if (!audio.isPlaying)
+            audio.Play();
+        yield return new WaitForSeconds(dialog[dialogIndex].timeToWaiteThree);
        _animator.SetBool("Talking",false);
        
        npcCanvas.gameObject.SetActive(false);
