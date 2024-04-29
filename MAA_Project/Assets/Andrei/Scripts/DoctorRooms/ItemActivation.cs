@@ -55,7 +55,7 @@ public class ItemActivation : MonoBehaviour
 
     void Update()
     {
-        if(uiCanvas.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        if(uiCanvas.activeInHierarchy && (Input.GetKeyDown(KeyCode.E) || (Input.GetKeyDown(KeyCode.Return))))
         {
             PlayerPrefs.SetInt("PlayerSpawn", playerSpawnIndex);
             PlayerPrefs.SetInt("PhraseIndex", phraseIndex);
