@@ -21,6 +21,26 @@ public class PuzzleManagerAhmed : MonoBehaviour
 
     [SerializeField] int gameCompleteSceneIndex;
 
+
+    // DELETE ME
+  private void Start()
+  {
+      if (!allCanvasFilled)
+      {
+          foreach (TextMeshProUGUI text in hiddenTextToBeShownAfterAllFilled)
+          {
+              text.enabled = false;
+          }
+  
+          foreach(WordInSpace canvases in canvasTexts)
+          {
+                //canvases.gameObject.SetActive(false);
+          }
+      }
+  }
+
+    // DELETE ME
+
     private void Update()
     {
         AddWordsToCanvas();
@@ -55,6 +75,11 @@ public class PuzzleManagerAhmed : MonoBehaviour
             foreach (TextMeshProUGUI text in hiddenTextToBeShownAfterAllFilled )
             {
                 text.enabled = true;
+            }
+
+            foreach (WordInSpace canvases in canvasTexts)
+            {
+                canvases.gameObject.SetActive(true);
             }
         }
         // Add word to panel if conditions are met

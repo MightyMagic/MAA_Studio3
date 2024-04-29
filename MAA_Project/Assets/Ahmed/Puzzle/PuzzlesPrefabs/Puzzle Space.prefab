@@ -89,7 +89,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356271690076691464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917228109865610318}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126067786639005473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758915705465542764}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -766,8 +766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b939c7abb13ccf498820bd86ee47e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wobbleSpeed: 4
-  wobbleDistance: 20
+  wobbleSpeed: 1
+  wobbleDistance: 100
 --- !u!1 &2233301574505532639
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +822,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2233301574505532639}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -930,8 +930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b939c7abb13ccf498820bd86ee47e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wobbleSpeed: 6
-  wobbleDistance: 30
+  wobbleSpeed: 0.5
+  wobbleDistance: 200
 --- !u!1 &2296729111170685464
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +985,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2296729111170685464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2436613664011342414}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1243,8 +1243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b939c7abb13ccf498820bd86ee47e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wobbleSpeed: 6
-  wobbleDistance: 30
+  wobbleSpeed: 0.5
+  wobbleDistance: 200
 --- !u!1 &2570722772747542904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2875698904522636109}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3676428191547076970}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1728,8 +1728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b939c7abb13ccf498820bd86ee47e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wobbleSpeed: 4
-  wobbleDistance: 20
+  wobbleSpeed: 1
+  wobbleDistance: 100
 --- !u!1 &3745293467565398530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,7 +1941,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4326819864850289854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -2049,8 +2049,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b939c7abb13ccf498820bd86ee47e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wobbleSpeed: 4
-  wobbleDistance: 20
+  wobbleSpeed: 1
+  wobbleDistance: 100
 --- !u!1 &4591516440215791375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,7 +2433,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6297078412940247503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -2541,8 +2541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b939c7abb13ccf498820bd86ee47e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wobbleSpeed: 4
-  wobbleDistance: 20
+  wobbleSpeed: 1
+  wobbleDistance: 100
 --- !u!1 &6604788065787977902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,7 +2777,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7873356840204737758}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -2885,8 +2885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b939c7abb13ccf498820bd86ee47e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wobbleSpeed: 6
-  wobbleDistance: 30
+  wobbleSpeed: 0.5
+  wobbleDistance: 200
 --- !u!1 &8137169945789956697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +2941,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8137169945789956697}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -3049,8 +3049,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b939c7abb13ccf498820bd86ee47e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wobbleSpeed: 6
-  wobbleDistance: 30
+  wobbleSpeed: 0.5
+  wobbleDistance: 200
 --- !u!1 &8355809895813050728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,7 +3141,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9069291565567888101}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -3304,7 +3304,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9136446189421423821}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
