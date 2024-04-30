@@ -67,7 +67,7 @@ public class SimpleDialogue : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
         {
             if (emilyOptions[responseIndex].text != string.Empty)
             {
