@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MonsterDirector">
+    <Position X="10.75" Y="1" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQIIEAAACICADCgIoJAAEAQEAAABFABCQAIBAQACEA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\MonsterLogic\MonsterDirector.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="monsterScript" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="chunkWaypoints" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SimpleMonster">
+    <Position X="7.75" Y="1" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>QAQEAAAAECIAEAAEAAAAAAAAAAAAAABpAgAABBQABCA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\SimpleMonster.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="grid" />
+      <Field Name="pathFinding" />
+      <Field Name="player" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PathFinding">
+    <Position X="3.75" Y="0.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAABAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Ahmed\Pathfinding\PathFinding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Waypoint">
+    <Position X="16" Y="0.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIACAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\MonsterLogic\Waypoints.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChunkWaypoints">
+    <Position X="13.5" Y="0.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\MonsterLogic\Waypoints.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="waypoints" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GridX">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAIBAACIAAAAAAAACAgAAAAAAAAACAgAAGAAAAgA=</HashCode>
+      <FileName>Assets\Ahmed\Pathfinding\GridX.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.GameObject" Collapsed="true">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="CameraControls" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoRAAAAAACAAAAAAAEAAAAAEAgAAAAGAAAAABAAAAQA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\DoctorRooms\CameraControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemActivation" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQQAAAgAiAAQAQMACAAAAAAAAgCEAEAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\DoctorRooms\ItemActivation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleDialogue" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiAIAFgQAAQAAAAAgCAAUAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\DoctorRooms\SimpleDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DialogueObject" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAoAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\DoctorRooms\SimpleDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="CharacterName" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAQAAgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\DoctorRooms\SimpleDialogue.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

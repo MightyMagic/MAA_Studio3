@@ -132,7 +132,7 @@ public class MonsterDirector : MonoBehaviour
             }
         }
 
-        // Insta kill with no escape
+        // Locks on the player 
         if(distanceToPlayer < smallRadius && !playerIsDead)
         {
             playerIsDead = true;
@@ -151,6 +151,7 @@ public class MonsterDirector : MonoBehaviour
             //monsterScript.rb.velocity = vectorToPlayer.normalized * monsterScript.moveSpeed;
         }
 
+        // Insta kill
         if (distanceToPlayer < (smallRadius * 0.7f))
         {
             print("Skill issue");

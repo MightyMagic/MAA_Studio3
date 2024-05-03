@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MonsterDirector">
+    <Position X="23.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIIEAAACICADCgIoJAAEAQEAAABFABCQAIBAQACEA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\MonsterLogic\MonsterDirector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChunkShuffle">
+    <Position X="14.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABSAAEAQACCAAACgAAAAAQQACAAIAAAAAgAQIAAEAEA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\Shuffling\ChunkShuffle.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="configurations" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ChunkConfiguration">
+    <Position X="11" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAADAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\Shuffling\ChunkShuffle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Anchor" Collapsed="true">
+    <Position X="5.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\Shuffling\ChunkShuffle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoreRoomManager">
+    <Position X="20.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARQIgAABQCBIAAAhIAAAABAgAghAAAAAAgAABAgAAEU=</HashCode>
+      <FileName>Assets\Andrei\Scripts\LoreRooms\LoreRoomManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="phrasesToActivate" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="PhrasesToActivate">
+    <Position X="23.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\LoreRooms\LoreRoomManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhraseObject">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\LoreRooms\LoreRoomManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PuzzleManagerAhmed">
+    <Position X="15.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAgASAAAggAAAAgAAOQAAAAEBAAAAAABIIIAAA=</HashCode>
+      <FileName>Assets\Ahmed\Puzzle\PuzzleManagerAhmed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EyesClosedEnvironment">
+    <Position X="20.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEEACCACAAAAAAiAAAAAAgAAAAAAQgACAAAAAIA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\EyesMechanic\EyesClosedEnvironment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveLoadManager">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASQAAAAJBAAACACAAAACAJAAAAAIAAAIAAAAAAAAUA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\SaveLoadRespawn\SaveLoadManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="puzzleManager" />
+      <Field Name="shuffler" />
+      <Field Name="monsterObject" />
+      <Field Name="eyesClosedEnvironment" />
+      <Field Name="roomManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UnityEngine.GameObject" Collapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="PhraseTracking">
+    <Position X="25.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Andrei\Scripts\SaveLoadRespawn\PhraseTracking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
