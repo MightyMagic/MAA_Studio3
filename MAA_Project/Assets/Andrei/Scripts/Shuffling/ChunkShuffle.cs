@@ -74,6 +74,11 @@ public class ChunkShuffle : MonoBehaviour
        //     RearrangeChunks();
        // }
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(FullLAyoutSwapCoroutine());
+        }
+
     }
 
     public void SpawnFirstLayout()

@@ -2233,10 +2233,10 @@ MonoBehaviour:
   - text: 'Emily, 17.  Complaints are vivid hallucinations, severe anxiety and panic
       attacks. Increased level of stress, repetitive nightmares, lack of appetite
       enforced by paranoid thoughts. '
-    clip: {fileID: 8300000, guid: 7ac0ac2dbabdede429f58b3ad55ff3f0, type: 3}
+    clip: {fileID: 8300000, guid: a3aa0f50e65066d459f8011699c6e2a7, type: 3}
     characterName: 1
   - text: "Nice to finally see you in person. Is everything I\u2019ve mentioned accurate? "
-    clip: {fileID: 8300000, guid: 1fc5d41ffac4731499d1d866a38117f0, type: 3}
+    clip: {fileID: 8300000, guid: a7e2e74e08f5bbd4fa0016925c25e726, type: 3}
     characterName: 1
   - text: "Sometimes I cannot believe this is all happening to me\u2026 Sorry, yes,
       It\u2019s all true.  Good to see you too, doctor. "
